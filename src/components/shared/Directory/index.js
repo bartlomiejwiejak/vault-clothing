@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './styles.scss';
 import MenuItem from '../MenuItem';
 
-export default () => {
+const Directory = () => {
   const [sections, setSections] = useState([
     {
       title: 'hats',
@@ -45,3 +45,5 @@ export default () => {
     </div>
   );
 }
+
+export default Directory;
