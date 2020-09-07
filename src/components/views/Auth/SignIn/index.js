@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 
 import Input from '../../../shared/Input';
+import './styles.scss';
+import Button from '../../../shared/Button';
 
 const SignIn = () => {
   const [formState, setFormState] = useState({
@@ -26,6 +28,7 @@ const SignIn = () => {
       <form onSubmit={handleSubmit}>
         <Input handleChange={handleChange} label='email' />
         <Input handleChange={handleChange} label='password' />
+        <Button type='submit'>Sign In</Button>
       </form>
     </div>
   )
