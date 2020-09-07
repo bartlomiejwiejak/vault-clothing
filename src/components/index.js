@@ -22,7 +22,6 @@ function App() {
           })
         })
       }
-      console.log(user)
       setCurrentUser(user)
     })
     return () => {
