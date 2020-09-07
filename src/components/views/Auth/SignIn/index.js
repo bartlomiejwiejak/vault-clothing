@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Input from '../../../shared/Input';
 import './styles.scss';
 import Button from '../../../shared/Button';
+import { signInWithGoogle } from '../../../../firebase/firebaseUtils';
 
 const SignIn = () => {
   const [formState, setFormState] = useState({
@@ -29,6 +30,7 @@ const SignIn = () => {
         <Input handleChange={handleChange} label='email' />
         <Input handleChange={handleChange} label='password' />
         <Button type='submit'>Sign In</Button>
+        <Button onClick={signInWithGoogle}>Sign In With Google</Button>
       </form>
     </div>
   )
