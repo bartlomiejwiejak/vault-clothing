@@ -22,7 +22,7 @@ const SignUp = () => {
     }
     try {
       const { user } = await auth.createUserWithEmailAndPassword(email, password)
-      await createUserProfile(user)
+      await createUserProfile(user, { displayName })
       setFormState({
         displayName: '',
         email: '',
