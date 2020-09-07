@@ -20,8 +20,15 @@ const SignIn = () => {
   }
 
   function handleChange(e) {
-    const { value, name } = e.target
+    const { name, value } = e.target;
+    setFormState(prevState => {
+      return {
+        ...prevState,
+        [name]: value
+      }
+    })
   }
+
   return (
     <div className='sign-in'>
       <h2>I already have an account</h2>

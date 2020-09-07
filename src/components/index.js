@@ -5,14 +5,23 @@ import Home from './views/Home';
 import Shop from './views/Shop';
 import Header from './layout/Header';
 import Auth from './views/Auth';
-import { auth } from '../firebase/firebaseUtils';
+import { auth, createUserProfile } from '../firebase/firebaseUtils';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({})
   const unsubscribeFromAuth = useRef(null)
 
   useEffect(() => {
-    unsubscribeFromAuth.current = auth.onAuthStateChanged(user => {
+    unsubscribeFromAuth.current = auth.onAuthStateChanged(async user => {
+      if (user) {
+        const userRef = await createUserProfile(user)
+        userRef.onSnapshot(snapshot => {
+          setCurrentUser({
+            id: snapshot.id,
+            ...snapshot.data()
+          })
+        })
+      }
       setCurrentUser(user)
     })
     return () => {
