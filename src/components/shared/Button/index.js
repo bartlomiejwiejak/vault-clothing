@@ -2,9 +2,9 @@ import React from 'react'
 
 import './styles.scss';
 
-const Button = ({ children, ...otherProps }) => {
+const Button = ({ children, isGoogle, ...otherProps }) => {
   return (
-    <button className='button' {...otherProps}>
+    <button className={`button ${isGoogle ? 'is-google' : ''}`} {...otherProps}>
       {children}
     </button>
   )

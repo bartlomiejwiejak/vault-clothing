@@ -15,12 +15,14 @@ function App() {
     unsubscribeFromAuth.current = auth.onAuthStateChanged(user => {
       setCurrentUser(user)
     })
-    return unsubscribeFromAuth;
+    return () => {
+      unsubscribeFromAuth()
+    };
   }, [])
 
   return (
     <div className="App">
-      <Header />
+      <Header currentUser={currentUser} />
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/shop' component={Shop} />
