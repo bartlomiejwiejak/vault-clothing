@@ -16,6 +16,9 @@
   box-sizing: border-box;
   transition: .2s;
   outline: none;
+  display: flex;
+  justify-content: center;
+  
   &.is-google {
     background-color: #4285f4;
     color: white;
@@ -28,5 +31,15 @@
     background-color: white;
     color: black;
     border: 1px solid black;
+  }
+  &.inverted {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    &:hover {
+      background-color: black;
+      color: white;
+      border: none;
+    }
   }
 }
