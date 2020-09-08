@@ -1,7 +1,8 @@
 import actionTypes from './actionTypes';
 
 const INITIAL_STATE = {
-  hidden: true
+  hidden: true,
+  cartItems: []
 }
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -10,6 +11,11 @@ const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         hidden: !state.hidden
+      }
+    case actionTypes.ADD_ITEM:
+      return {
+        ...state,
+        cartItems: [...state.cartItems, action.payload]
       }
     default: return state
   }
