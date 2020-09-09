@@ -10,6 +10,7 @@ import { auth, createUserProfile } from '../firebase/firebaseUtils';
 import { setCurrentUser } from '../redux/user/actions';
 import { selectCurrentUser } from '../redux/user/selectors';
 import { createStructuredSelector } from 'reselect';
+import Checkout from './views/Checkout';
 
 function App({ setCurrentUser, currentUser }) {
   const unsubscribeFromAuth = useRef(null)
@@ -39,6 +40,7 @@ function App({ setCurrentUser, currentUser }) {
         <Route path='/' exact component={Home} />
         <Route path='/shop' component={Shop} />
         <Route path='/auth' exact render={() => currentUser ? <Redirect to='/' /> : <Auth />} />
+        <Route path='/checkout' exact component={Checkout} />
       </Switch>
     </div>
   );
