@@ -12,7 +12,6 @@
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid darkgrey;
-
     .header-block {
       text-transform: capitalize;
       width: 23%;
@@ -22,10 +21,19 @@
       }
     }
   }
-
   .total {
     margin-top: 30px;
     margin-left: auto;
     font-size: 36px;
+  }
+  .text-warning {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 24px;
+    color: red;
+  }
+  button {
+    margin-left: auto;
+    margin-top: 50px;
   }
 }
