@@ -6,12 +6,13 @@ import CollectionItem from '../../../shared/CollectionItem';
 import './styles.scss';
 
 const Category = ({ collection }) => {
+  console.log('render category', collection)
   const { title, items } = collection;
   return (
     <div className='category'>
       <h2>{title}</h2>
       <div className='items'>
-        {items.map(item => <CollectionItem item={item} />)}
+        {items.map(item => <CollectionItem key={item.name} item={item} />)}
       </div>
     </div>
   )

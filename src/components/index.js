@@ -28,9 +28,7 @@ function App({ setCurrentUser, currentUser }) {
       }
       setCurrentUser(user)
     })
-    return () => {
-      unsubscribeFromAuth()
-    };
+    return unsubscribeFromAuth.current
   }, [setCurrentUser])
 
   return (

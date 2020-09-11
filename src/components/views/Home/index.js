@@ -1,13 +1,13 @@
 import React from 'react';
 
-import './styles.scss';
 import Directory from '../../shared/Directory';
+import { StyledHome } from './styles';
 
 const Home = () => {
   return (
-    <div className='homepage'>
+    <StyledHome>
       <Directory />
-    </div>
+    </StyledHome>
   );
 }
 
