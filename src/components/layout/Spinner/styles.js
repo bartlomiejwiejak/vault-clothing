@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SpinnerOverlay = styled.div`
+export const StyledOverlay = styled.div`
   height: 60vh;
   width: 100%;
   display: flex;
@@ -8,7 +8,7 @@ export const SpinnerOverlay = styled.div`
   align-items: center;
 `;
 
-export const SpinnerContainer = styled.div`
+export const StyledContainer = styled.div`
   display: inline-block;
   width: 50px;
   height: 50px;

@@ -8,7 +8,7 @@ import { setCollections } from '../../../redux/shop/actions';
 import { selectShopCollectionsForPreview } from '../../../redux/shop/selectors';
 import { createStructuredSelector } from 'reselect';
 import { firestore } from '../../../firebase/firebaseUtils';
-import Spinner from '../../hoc/Spinner';
+import Spinner from '../../layout/Spinner';
 
 const Shop = ({ match, setCollections, collections }) => {
   useEffect(() => {
@@ -29,12 +29,12 @@ const Shop = ({ match, setCollections, collections }) => {
       setCollections(collections)
     })
   }, [setCollections])
-  return collections.length !== 0 && (
+  return collections.length !== 0 ? (
     <div>
       <Route path={`${match.path}`} exact component={CollectionsOverview} />
       <Route path={`${match.path}/:categoryId`} exact component={Category} />
     </div>
-  );
+  ) : <Spinner />
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -45,4 +45,4 @@ const mapDispatchToProps = dispatch => ({
   setCollections: (collections) => dispatch(setCollections(collections))
 })
 
-export default Spinner(, connect(mapStateToProps, mapDispatchToProps)(Shop));
+export default connect(mapStateToProps, mapDispatchToProps)(Shop);
