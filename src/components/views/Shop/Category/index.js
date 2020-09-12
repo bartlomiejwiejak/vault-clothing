@@ -6,7 +6,6 @@ import CollectionItem from '../../../shared/CollectionItem';
 import './styles.scss';
 
 const Category = ({ collection }) => {
-  console.log('render category', collection)
   const { title, items } = collection;
   return (
     <div className='category'>

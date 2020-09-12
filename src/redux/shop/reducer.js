@@ -1,7 +1,7 @@
 import actionTypes from './actionTypes';
 
 const INITIAL_STATE = {
-  collections: {},
+  collections: null,
   isLoading: false,
   errorMessage: ''
 }

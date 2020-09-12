@@ -8,12 +8,14 @@ import { setCollections } from '../../../redux/shop/actions';
 import { selectShopCollectionsForPreview } from '../../../redux/shop/selectors';
 import { createStructuredSelector } from 'reselect';
 import Spinner from '../../layout/Spinner';
-import { selectIsLoading } from '../../../redux/shop/selectors';
+import { selectIsLoading, selectIsCollectionLoaded } from '../../../redux/shop/selectors';
 
-const Shop = ({ match, setCollections, collections, isLoading }) => {
+const Shop = ({ match, setCollections, isLoading, collectionIsLoaded }) => {
   useEffect(() => {
     setCollections()
   }, [setCollections])
+  if (!collectionIsLoaded && isLoading === false) return null;
+
   return isLoading ? <Spinner /> : (
     <div>
       <Route path={`${match.path}`} exact component={CollectionsOverview} />
@@ -24,7 +26,8 @@ const Shop = ({ match, setCollections, collections, isLoading }) => {
 
 const mapStateToProps = createStructuredSelector({
   collections: selectShopCollectionsForPreview,
-  isLoading: selectIsLoading
+  isLoading: selectIsLoading,
+  collectionIsLoaded: selectIsCollectionLoaded
 })
 
 const mapDispatchToProps = dispatch => ({
