@@ -7,32 +7,28 @@ import Category from './Category';
 import { setCollections } from '../../../redux/shop/actions';
 import { selectShopCollectionsForPreview } from '../../../redux/shop/selectors';
 import { createStructuredSelector } from 'reselect';
-import { firestore } from '../../../firebase/firebaseUtils';
 import Spinner from '../../layout/Spinner';
-import { convertCollectionsSnapshotToMap } from '../../../firebase/firebaseUtils';
+import { selectIsLoading } from '../../../redux/shop/selectors';
 
-const Shop = ({ match, setCollections, collections }) => {
+const Shop = ({ match, setCollections, collections, isLoading }) => {
   useEffect(() => {
-    const collectionsRef = firestore.collection('collections')
-    collectionsRef.get().then(async snapshot => {
-      const collections = await convertCollectionsSnapshotToMap(snapshot)
-      setCollections(collections)
-    })
+    setCollections()
   }, [setCollections])
-  return collections.length !== 0 ? (
+  return isLoading ? <Spinner /> : (
     <div>
       <Route path={`${match.path}`} exact component={CollectionsOverview} />
       <Route path={`${match.path}/:categoryId`} exact component={Category} />
     </div>
-  ) : <Spinner />
+  )
 }
 
 const mapStateToProps = createStructuredSelector({
   collections: selectShopCollectionsForPreview,
+  isLoading: selectIsLoading
 })
 
 const mapDispatchToProps = dispatch => ({
-  setCollections: (collections) => dispatch(setCollections(collections))
+  setCollections: () => dispatch(setCollections())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Shop);
