@@ -51,6 +51,21 @@ export const addCollectionsAndDocuments = async (collectionName, documentsToAdd)
   })
   return await batch.commit()
 }
+export const convertCollectionsSnapshotToMap = async (snapshot) => {
+  let collections = {};
+  for (let snapshotDoc of snapshot.docs) {
+    const docData = await snapshotDoc.data();
+    collections = {
+      ...collections,
+      [docData.title.toLowerCase()]: {
+        id: snapshotDoc.id,
+        title: docData.title,
+        items: docData.items
+      }
+    }
+  }
+  return collections;
+}
 
 const provider = new firebase.auth.GoogleAuthProvider()
 provider.setCustomParameters({ prompt: 'select_account' })

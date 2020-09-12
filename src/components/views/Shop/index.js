@@ -9,23 +9,13 @@ import { selectShopCollectionsForPreview } from '../../../redux/shop/selectors';
 import { createStructuredSelector } from 'reselect';
 import { firestore } from '../../../firebase/firebaseUtils';
 import Spinner from '../../layout/Spinner';
+import { convertCollectionsSnapshotToMap } from '../../../firebase/firebaseUtils';
 
 const Shop = ({ match, setCollections, collections }) => {
   useEffect(() => {
     const collectionsRef = firestore.collection('collections')
-    collectionsRef.onSnapshot(async snapshot => {
-      let collections = {};
-      for (let snapshotDoc of snapshot.docs) {
-        const docData = await snapshotDoc.data();
-        collections = {
-          ...collections,
-          [docData.title.toLowerCase()]: {
-            id: snapshotDoc.id,
-            title: docData.title,
-            items: docData.items
-          }
-        }
-      }
+    collectionsRef.get().then(async snapshot => {
+      const collections = await convertCollectionsSnapshotToMap(snapshot)
       setCollections(collections)
     })
   }, [setCollections])
