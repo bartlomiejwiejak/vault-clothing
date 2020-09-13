@@ -4,16 +4,16 @@ import { connect } from 'react-redux';
 
 import CollectionsOverview from './CollectionOverview';
 import Category from './Category';
-import { setCollections } from '../../../redux/shop/actions';
+import { setCollectionsStart } from '../../../redux/shop/actions';
 import { selectShopCollectionsForPreview } from '../../../redux/shop/selectors';
 import { createStructuredSelector } from 'reselect';
 import Spinner from '../../layout/Spinner';
 import { selectIsLoading, selectIsCollectionLoaded } from '../../../redux/shop/selectors';
 
-const Shop = ({ match, setCollections, isLoading, collectionIsLoaded }) => {
+const Shop = ({ match, setCollectionsStart, isLoading, collectionIsLoaded }) => {
   useEffect(() => {
-    setCollections()
-  }, [setCollections])
+    setCollectionsStart()
+  }, [setCollectionsStart])
   if (!collectionIsLoaded && isLoading === false) return null;
 
   return isLoading ? <Spinner /> : (
@@ -31,7 +31,7 @@ const mapStateToProps = createStructuredSelector({
 })
 
 const mapDispatchToProps = dispatch => ({
-  setCollections: () => dispatch(setCollections())
+  setCollectionsStart: () => dispatch(setCollectionsStart())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Shop);
