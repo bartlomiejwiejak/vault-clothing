@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -6,12 +6,12 @@ import Home from './views/Home';
 import Shop from './views/Shop';
 import Header from './layout/Header';
 import Auth from './views/Auth';
-import { setCurrentUser } from '../redux/user/actions';
+import { checkUserSession } from '../redux/user/actions';
 import { selectCurrentUser } from '../redux/user/selectors';
 import { createStructuredSelector } from 'reselect';
 import Checkout from './views/Checkout';
 
-function App({ setCurrentUser, currentUser }) {
+function App({ currentUser, checkUserSession }) {
 
   // useEffect(() => {
   //   unsubscribeFromAuth.current = auth.onAuthStateChanged(async user => {
@@ -28,6 +28,10 @@ function App({ setCurrentUser, currentUser }) {
   //   })
   //   return unsubscribeFromAuth.current
   // }, [setCurrentUser])
+
+  useEffect(() => {
+    checkUserSession()
+  }, [checkUserSession])
 
   return (
     <div className="App">
@@ -48,7 +52,7 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = dispatch => (
   {
-    setCurrentUser: user => dispatch(setCurrentUser(user))
+    checkUserSession: () => dispatch(checkUserSession())
   }
 )
 

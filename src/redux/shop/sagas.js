@@ -1,4 +1,4 @@
-import { takeLatest, put, call } from 'redux-saga/effects';
+import { takeLatest, put, call, all } from 'redux-saga/effects';
 
 import actionTypes from './actionTypes';
 import { convertCollectionsSnapshotToMap, firestore } from '../../firebase/firebaseUtils';
@@ -16,4 +16,8 @@ export function* setCollections() {
 }
 export function* onSetCollectionsStart() {
   yield takeLatest(actionTypes.SET_COLLECTIONS_START, setCollections)
+}
+
+export default function* () {
+  yield all([call(onSetCollectionsStart)])
 }

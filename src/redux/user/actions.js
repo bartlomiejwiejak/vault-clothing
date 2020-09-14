@@ -21,3 +21,16 @@ export const emailSignInStart = (credentials) => ({
   type: actionTypes.EMAIL_SIGN_IN_START,
   payload: credentials
 })
+export const checkUserSession = () => ({
+  type: actionTypes.CHECK_USER_SESSION
+})
+export const signOutStart = () => ({
+  type: actionTypes.SIGN_OUT_START
+})
+export const signOutSuccess = () => ({
+  type: actionTypes.SIGN_OUT_SUCCESS
+})
+export const signOutFail = (err) => ({
+  type: actionTypes.SIGN_OUT_FAIL,
+  payload: err
+})
