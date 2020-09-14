@@ -1,11 +1,11 @@
 import { all, call } from 'redux-saga/effects';
 
-import { setCollectionsStart } from './shop/sagas';
+import { onSetCollectionsStart } from './shop/sagas';
 import userSagas from './user/sagas';
 
 export default function* () {
   yield all([
-    call(setCollectionsStart),
+    call(onSetCollectionsStart),
     call(userSagas)
   ])
 }

@@ -14,6 +14,6 @@ export function* setCollections() {
     yield put(setCollectionsFail(err.message))
   }
 }
-export function* setCollectionsStart() {
+export function* onSetCollectionsStart() {
   yield takeLatest(actionTypes.SET_COLLECTIONS_START, setCollections)
 }
