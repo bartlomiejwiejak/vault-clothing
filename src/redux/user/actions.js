@@ -1,11 +1,5 @@
 import actionTypes from './actionTypes';
 
-export const setCurrentUser = user => {
-  return {
-    type: actionTypes.SET_CURRENT_USER,
-    payload: user
-  }
-}
 export const googleSignInStart = () => ({
   type: actionTypes.GOOGLE_SIGN_IN_START
 })
@@ -33,4 +27,8 @@ export const signOutSuccess = () => ({
 export const signOutFail = (err) => ({
   type: actionTypes.SIGN_OUT_FAIL,
   payload: err
+})
+export const signUpStart = (credentials) => ({
+  type: actionTypes.SIGN_UP_START,
+  payload: credentials
 })
