@@ -1,0 +1,38 @@
+html {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: none;
+  font-size: 62.5%;
+  @include respond(xlarge) {
+    font-size: 59.375%;
+  }
+  @include respond(large) {
+    font-size: 56.25%;
+  }
+  @include respond(medium) {
+    font-size: 53.125%;
+  }
+  @include respond(small) {
+    font-size: 50%;
+  }
+  @include respond(xsmall) {
+    font-size: 46.875%;
+  }
+  @include respond(xxsmall) {
+    font-size: 43.75%;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+*:focus, *:active {
+  outline: none;
+}
+a {
+color: inherit;
+text-decoration: none;
+}

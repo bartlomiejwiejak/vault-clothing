@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Home from './views/Home';
-import Shop from './views/Shop';
 import Header from './layout/Header';
-import Auth from './views/Auth';
 import { checkUserSession } from '../redux/user/actions';
 import { selectCurrentUser } from '../redux/user/selectors';
 import { createStructuredSelector } from 'reselect';
-import Checkout from './views/Checkout';
+import Basket from './layout/Basket';
+
+const Shop = lazy(() => import('./views/Shop'));
+const Home = lazy(() => import('./views/Home'));
+const Auth = lazy(() => import('./views/Auth'));
+const Checkout = lazy(() => import('./views/Checkout'))
 
 function App({ currentUser, checkUserSession }) {
 
@@ -34,15 +36,21 @@ function App({ currentUser, checkUserSession }) {
   }, [checkUserSession])
 
   return (
-    <div className="App">
+    <>
       <Header />
+      <Basket />
       <Switch>
-        <Route path='/' exact component={Home} />
-        <Route path='/shop' component={Shop} />
-        <Route path='/auth' exact render={() => currentUser ? <Redirect to='/' /> : <Auth />} />
-        <Route path='/checkout' exact component={Checkout} />
+        <Suspense fallback={null}>
+          <div className="content">
+            <Route path='/' exact component={Home} />
+            <Route path='/shop' component={Shop} />
+            <Route path='/auth' exact render={() => currentUser ? <Redirect to='/' /> : <Auth />} />
+            <Route path='/checkout' exact component={Checkout} />
+          </div>
+        </Suspense>
       </Switch>
-    </div>
+
+    </>
   );
 }
 
@@ -50,10 +58,8 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
 })
 
-const mapDispatchToProps = dispatch => (
-  {
-    checkUserSession: () => dispatch(checkUserSession())
-  }
-)
+const mapDispatchToProps = dispatch => ({
+  checkUserSession: () => dispatch(checkUserSession())
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,0 +1,21 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overscroll-behavior: contain;
+}
+
+.content {
+  padding: 15rem 0;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+#root {
+  background-color: var(--color-white);
+}

@@ -1,0 +1,17 @@
+$breakpoints: (
+  xxsmall: (max-width: 460px),
+  xsmall: (max-width: 640px),
+  small: (max-width: 800px),
+  medium: (max-width: 1024px),
+  large: (max-width: 1200px),
+  xlarge: (max-width: 1440px)
+);
+:root {
+  --default-font-size: 1.6rem;
+  --font-size-s: 1rem;
+  --font-size-m: 2.6rem;
+  --font-size-l: 3.6rem;
+  --color-black: #000;
+  --color-white: #fff;
+  --color-light: #fff3d8;
+}

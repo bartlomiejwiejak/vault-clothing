@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { ReactComponent as Logo } from '../../../assets/crown.svg';
 import CartIcon from '../../shared/CartIcon';
 import CartDropdown from '../../shared/CartDropdown';
 import { selectCurrentUser } from '../../../redux/user/selectors';
@@ -13,7 +12,8 @@ import { signOutStart } from '../../../redux/user/actions';
 const Header = ({ currentUser, toggleCartHidden, hidden, signOutStart }) => (
   <StyledHeader>
     <StyledLogo to='/'>
-      <Logo className='logo' />
+      <div>vault </div>
+      <div>clothing</div>
     </StyledLogo>
     <StyledOptions>
       <StyledOption to='/shop'>
