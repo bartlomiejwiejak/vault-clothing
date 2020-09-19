@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { connect } from 'react-redux';
 import gsap from 'gsap';
 
@@ -8,6 +8,7 @@ import { createStructuredSelector } from 'reselect';
 import { StyledHeader, StyledLogo, StyledBurger, StyledDropdown, StyledMenu, StyledContact } from './styles';
 import { signOutStart } from '../../../redux/user/actions';
 import MenuButton from '../../shared/MenuButton';
+import Cart from './Cart';
 
 const Header = ({ currentUser }) => {
   const dropdownRef = useRef(null);
@@ -70,8 +71,8 @@ const Header = ({ currentUser }) => {
               <span>Phone</span>
               <MenuButton color='var(--color-black)' size='var(--font-size-m)' bold={false}>+1 202 555 0145</MenuButton>
             </li>
-            <li></li>
           </StyledContact>
+          <Cart />
         </div>
       </StyledDropdown>
       <StyledHeader>

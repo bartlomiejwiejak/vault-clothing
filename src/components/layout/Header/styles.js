@@ -51,6 +51,7 @@ export const StyledDropdown = styled.div`
 height: 50vh;
 width: 100vw;
 position: fixed;
+z-index: 2;
 overflow: hidden;
 background-color: var(--color-light);
 left: 0;
