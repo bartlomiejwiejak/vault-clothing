@@ -10,12 +10,11 @@ body {
   overscroll-behavior: contain;
 }
 
-.content {
-  padding: 15rem 0;
-  margin: 0 auto;
-  max-width: 1200px;
-}
-
 #root {
   background-color: var(--color-white);
+  & > .content {
+    padding: 15rem 0;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
 }

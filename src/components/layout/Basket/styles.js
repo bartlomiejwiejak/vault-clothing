@@ -8,12 +8,14 @@ font-size: var(--font-size-l);
 z-index: 2;
 mix-blend-Mode: difference;
 color: var(--color-white);
-cursor: pointer;
 display: flex;
 flex-direction: column;
 align-items: center;
 span {
   font-size: var(--font-size-m);
   margin-top: -.5rem;
+}
+i {
+  cursor: pointer;
 }
 `

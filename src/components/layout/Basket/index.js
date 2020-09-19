@@ -15,9 +15,17 @@ const Basket = ({ itemCount }) => {
     tl.to(BaskedRef.current, .2, { rotate: '-20deg' })
     tl.to(BaskedRef.current, .1, { rotate: 0 })
   }, [itemCount])
+
+  const mouseEnterHandler = () => {
+    gsap.to(BaskedRef.current, .5, { scale: 1.2, ease: 'power2.out' })
+  }
+  const mouseOutHandler = () => {
+    gsap.to(BaskedRef.current, .5, { scale: 1, ease: 'power2.out' })
+  }
+
   return (
     <StyledBasket>
-      <i ref={BaskedRef} className="fas fa-shopping-basket"></i>
+      <i ref={BaskedRef} onMouseOut={mouseOutHandler} onMouseEnter={mouseEnterHandler} className="fas fa-shopping-basket"></i>
       <span>{itemCount}</span>
     </StyledBasket>
   )
