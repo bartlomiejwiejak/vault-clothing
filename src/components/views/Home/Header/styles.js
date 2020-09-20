@@ -9,6 +9,17 @@ justify-content: center;
 flex-direction: column;
 max-width: 140rem;
 margin: 0 auto;
+padding: 0 5rem;
+@media screen and (max-width: 1024px) {
+   padding: 0 3rem;
+ }
+ @media screen and (max-width: 800px) {
+  font-size: var(--font-size-l);
+ }
+ @media screen and (max-width: 640px) {
+   font-size: var(--font-size-m);
+   padding: 0 2rem;
+ }
 .action {
   font-size: var(--font-size-m);
   margin-top: 5rem;
