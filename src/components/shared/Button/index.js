@@ -1,12 +1,12 @@
 import React from 'react'
 
-import './styles.scss';
+import { StyledButton } from './styles';
 
 const Button = ({ children, isGoogle, inverted, ...otherProps }) => {
   return (
-    <button className={`button ${inverted ? 'inverted' : ''} ${isGoogle ? 'is-google' : ''}`} {...otherProps}>
+    <StyledButton isGoogle={isGoogle} inverted={inverted}{...otherProps}>
       {children}
-    </button>
+    </StyledButton>
   )
 }
 

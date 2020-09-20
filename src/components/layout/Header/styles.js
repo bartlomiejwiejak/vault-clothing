@@ -7,7 +7,7 @@ export const StyledHeader = styled.header`
   z-index: 2;
   display: flex;
   padding: 5rem 0;
-  max-width: 130rem;
+  max-width: 140rem;
   left: 50%;
   transform: translateX(-50%);
   justify-content: space-between;
@@ -60,7 +60,7 @@ transform: translateY(-100%);
 .content {
  display: flex;
  justify-content: space-between;
- max-width: 130rem;
+ max-width: 140rem;
  margin: 0 auto;
  margin-top: 10rem;
  height: calc(50vh - 10rem);
