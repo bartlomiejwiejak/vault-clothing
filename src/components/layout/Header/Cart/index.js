@@ -15,6 +15,7 @@ const CartDropdown = ({ cartItems }) => {
   }
   return (
     <StyledCart>
+      <span>Cart</span>
       <div className="items">
         {
           cartItems.length ?

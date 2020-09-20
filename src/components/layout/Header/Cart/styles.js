@@ -6,18 +6,21 @@ margin: 2rem 0;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
+>span {
+  font-size: var(--font-size-m);
+}
 .items {
   overflow: scroll;
-  height: 80%;
+  height: 70%;
   border: 1px solid black;
   padding: 1rem;
   position: relative;
+  font-size: var(--default-font-size);
   .empty-message {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
-  font-size: var(--default-font-size);
   }
 }
 `

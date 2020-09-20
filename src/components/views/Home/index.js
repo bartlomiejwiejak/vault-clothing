@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Directory from '../../shared/Directory';
+import Directory from './Directory';
 import { StyledHome } from './styles';
 
 const Home = () => {
