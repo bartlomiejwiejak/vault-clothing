@@ -25,7 +25,6 @@ width: 100%;
 }
 ${props => {
     return css`
-    font-size: ${props.size};
     color: ${props.color};
     font-weight: ${props.bold ? 'bold' : '400'};
     `

@@ -6,7 +6,7 @@ export const StyledHeader = styled.header`
   width: 100vw;
   z-index: 2;
   display: flex;
-  padding: 5rem 0;
+  padding: 5rem 5rem;
   max-width: 140rem;
   top: 0;
   left: 50%;
@@ -16,6 +16,18 @@ export const StyledHeader = styled.header`
   mix-blend-mode: difference;
   color: var(--color-white);
   font-size: var(--default-font-size);
+  @media screen and (max-width: 1200px){
+    padding: 4rem 4rem;
+  }
+  @media screen and (max-width: 1024px){
+    padding: 3rem 3rem;
+  }
+  @media screen and (max-width: 800px){
+    padding: 2rem 2rem;
+  }
+  @media screen and (max-width: 640px){
+    padding: 1rem 1rem;
+  }
 `
 export const StyledLogo = styled(Link)`
   height: 100%;
@@ -58,14 +70,27 @@ background-color: var(--color-light);
 left: 0;
 top: 0;
 transform: translateY(-100%);
+@media screen and (max-width: 640px) {
+  height: 70vh;
+ }
 .content {
  display: flex;
+ flex-wrap: wrap;
  justify-content: space-between;
  max-width: 140rem;
  margin: 0 auto;
  margin-top: 10rem;
  height: calc(50vh - 10rem);
  transform: translateY(100%);
+ padding: 0 5rem;
+ @media screen and (max-width: 1024px) {
+   padding: 0 3rem;
+ }
+ @media screen and (max-width: 640px) {
+   padding: 0 2rem;
+   margin-top: 5rem;
+   height: calc(70vh - 5rem);
+ }
 }
 `
 export const StyledMenu = styled.ul`
@@ -75,6 +100,12 @@ margin: 2rem 0;
 flex-direction: column;
 justify-content: space-between;
 list-style: none;
+li {
+  font-size: var(--font-size-xl);
+  @media screen and (max-width: 640px) {
+  font-size: var(--font-size-l);
+ }
+}
 span {
   font-size: var(--font-size-m);
 }
@@ -90,16 +121,12 @@ li {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  font-size: var(--font-size-m);
   span {
-    font-size: var(--font-size-m);
     font-weight: bold;
   }
 }
 > span {
   font-size: var(--font-size-m);
 }
-`
-export const StyledCart = styled.div`
-flex-basis: 30%;
-
 `

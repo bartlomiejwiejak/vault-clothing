@@ -60,20 +60,20 @@ const Header = ({ currentUser }) => {
         <div ref={dropdownContentRef} className='content'>
           <StyledMenu>
             <span>Menu</span>
-            <li><MenuButton color='var(--color-black)' size='var(--font-size-xl)' bold={true}>Shop</MenuButton></li>
-            <li><MenuButton color='var(--color-black)' size='var(--font-size-xl)' bold={true}>About</MenuButton></li>
-            <li>{currentUser ? <MenuButton color='var(--color-black)' size='var(--font-size-xl)' bold={true}>Sign Out</MenuButton> : <MenuButton color='var(--color-black)' size='var(--font-size-xl)' bold={true}>Sign Out</MenuButton>}</li>
+            <li><MenuButton color='var(--color-black)' bold={true}>Shop</MenuButton></li>
+            <li><MenuButton color='var(--color-black)' bold={true}>About</MenuButton></li>
+            <li>{currentUser ? <MenuButton color='var(--color-black)' bold={true}>Sign Out</MenuButton> : <MenuButton color='var(--color-black)' bold={true}>Sign Out</MenuButton>}</li>
           </StyledMenu>
           <StyledContact>
             <span>Contact</span>
             <li>
               <span>Email</span>
-              <MenuButton color='var(--color-black)' size='var(--font-size-m)' bold={false}>Get in touch</MenuButton>
-              <MenuButton color='var(--color-black)' size='var(--font-size-m)' bold={false}>hello@vaultclothing.com</MenuButton>
+              <MenuButton color='var(--color-black)' bold={false}>Get in touch</MenuButton>
+              <MenuButton color='var(--color-black)' bold={false}>hello@vaultclothing.com</MenuButton>
             </li>
             <li>
               <span>Phone</span>
-              <MenuButton color='var(--color-black)' size='var(--font-size-m)' bold={false}>+1 202 555 0145</MenuButton>
+              <MenuButton color='var(--color-black)' bold={false}>+1 202 555 0145</MenuButton>
             </li>
           </StyledContact>
           <Cart />

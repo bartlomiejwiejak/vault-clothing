@@ -2,9 +2,9 @@ import React from 'react'
 
 import { StyledMenuButton } from './styles';
 
-const MenuButton = ({ children, size, color, bold }) => {
+const MenuButton = ({ children, color, bold }) => {
   return (
-    <StyledMenuButton size={size} color={color} bold={bold}>
+    <StyledMenuButton color={color} bold={bold}>
       {children}
     </StyledMenuButton>
   )
