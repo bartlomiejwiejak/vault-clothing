@@ -38,7 +38,6 @@ function App({ currentUser, checkUserSession }) {
   return (
     <>
       <Header />
-      <Basket />
       <Switch>
         <Suspense fallback={null}>
           <div className="content">

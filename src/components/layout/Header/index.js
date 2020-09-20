@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { connect } from 'react-redux';
 import gsap from 'gsap';
+import { CustomEase } from 'gsap/CustomEase';
 
 import { selectCurrentUser } from '../../../redux/user/selectors';
 import { selectCartHidden } from '../../../redux/cart/selectors';
@@ -17,16 +18,19 @@ const Header = ({ currentUser }) => {
   const burgerRef = useRef(null);
   const dropdownContentRef = useRef(null);
 
+  gsap.registerPlugin(CustomEase);
+  CustomEase.create('custom', 'M0,0,C0.214,0.041,0.097,0.01,0.24,0.054,0.24,0.054,0.24,0.054,0.24,0.054,0.354,0.074,0.429,0.213,0.526,0.368,0.598,0.482,0.649,0.858,0.79,1,0.922,1,0.974,1,1,1')
+
   const dropdownHandler = () => {
     if (isAnimating.current) return;
     if (isDropdownOpen.current) {
       isAnimating.current = true;
-      gsap.to(dropdownContentRef.current, 1, { ease: 'power2.out', y: '100%' })
-      gsap.to(burgerRef.current.querySelector(':nth-child(1)'), .7, { rotate: 0, top: '2rem', ease: 'power2.out', delay: .3 })
-      gsap.to(burgerRef.current.querySelector(':nth-child(2)'), .7, { rotate: 0, bottom: '2rem', ease: 'power2.out', delay: .3 })
-      gsap.to('#root > .content', 1, { ease: 'power2.out', y: 0 })
+      gsap.to(dropdownContentRef.current, 1, { ease: 'custom', y: '100%' })
+      gsap.to(burgerRef.current.querySelector(':nth-child(1)'), .7, { rotate: 0, top: '2rem', ease: 'custom', delay: .3 })
+      gsap.to(burgerRef.current.querySelector(':nth-child(2)'), .7, { rotate: 0, bottom: '2rem', ease: 'custom', delay: .3 })
+      gsap.to('#root > .content', 1, { ease: 'custom', y: 0 })
       gsap.to(dropdownRef.current, 1, {
-        ease: 'power2.out', y: '-100%', onComplete: () => {
+        ease: 'custom', y: '-100%', onComplete: () => {
           isAnimating.current = false;
           gsap.set('body', { overflow: 'auto' })
           gsap.set('#root > .content', { pointerEvents: 'auto' })
@@ -36,13 +40,13 @@ const Header = ({ currentUser }) => {
     } else {
       isAnimating.current = true;
       gsap.set('body', { overflow: 'hidden' })
-      gsap.to(dropdownContentRef.current, 1, { ease: 'power2.out', y: 0 })
+      gsap.to(dropdownContentRef.current, 1, { ease: 'custom', y: 0 })
       gsap.set('#root > .content', { pointerEvents: 'none' })
-      gsap.to('#root > .content', 1, { ease: 'power2.out', y: '50vh' })
-      gsap.to(burgerRef.current.querySelector(':nth-child(1)'), .7, { rotate: '45deg', top: '2.4rem', ease: 'power2.out', delay: .3 })
-      gsap.to(burgerRef.current.querySelector(':nth-child(2)'), .7, { rotate: '-45deg', bottom: '2.4rem', ease: 'power2.out', delay: .3 })
+      gsap.to('#root > .content', 1, { ease: 'custom', y: '50vh' })
+      gsap.to(burgerRef.current.querySelector(':nth-child(1)'), .7, { rotate: '45deg', top: '2.4rem', ease: 'custom', delay: .3 })
+      gsap.to(burgerRef.current.querySelector(':nth-child(2)'), .7, { rotate: '-45deg', bottom: '2.4rem', ease: 'custom', delay: .3 })
       gsap.to(dropdownRef.current, 1, {
-        ease: 'power2.out', y: 0, onComplete: () => {
+        ease: 'custom', y: 0, onComplete: () => {
           isAnimating.current = false;
         }
       })

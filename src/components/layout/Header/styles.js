@@ -8,6 +8,7 @@ export const StyledHeader = styled.header`
   display: flex;
   padding: 5rem 0;
   max-width: 140rem;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   justify-content: space-between;

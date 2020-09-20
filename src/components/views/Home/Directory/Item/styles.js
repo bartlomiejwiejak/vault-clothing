@@ -6,10 +6,11 @@ position: relative;
 flex-shrink: 0;
 overflow: hidden;
 cursor: pointer;
+transition: .3s ease-out;
 :hover img {
 filter: brightness(0.4);
 transform: scale(1.03) translate(-50%,-50%);
-}
+} 
 img {
   height: 100%;
   position: absolute;
@@ -31,8 +32,5 @@ img {
   font-weight: bold;
   text-align: center;
   color: var(--color-grey);
-  .title {
-     
-  }
 }
 `

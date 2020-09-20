@@ -22,7 +22,7 @@ const useScroller = (elementsVisibleNumber) => {
       for (let i = 0; i < currentScrollIndex + 1; i++) {
         value = value + elements[i].offsetWidth;
       }
-      gsap.to(elements, .7, { ease: 'power.2out', x: -value, onComplete: () => { isAnimating.current = false } });
+      gsap.to(elements, .5, { ease: 'power.2out', x: -value, onComplete: () => { isAnimating.current = false } });
     } else if (direction === 'left') {
       if (currentScrollIndex === 0) return;
       isAnimating.current = true;
@@ -31,18 +31,24 @@ const useScroller = (elementsVisibleNumber) => {
       for (let i = 0; i < currentScrollIndex - 1; i++) {
         value = value + elements[i].offsetWidth;
       }
-      gsap.to(elements, .7, { ease: 'power.2out', x: -value, onComplete: () => { isAnimating.current = false } });
+      gsap.to(elements, .5, { ease: 'power.2out', x: -value, onComplete: () => { isAnimating.current = false } });
     }
   }, [currentScrollIndex, elements, elementsVisibleNumber])
 
   useEffect(() => {
+    let timeout = null;
     const listener = window.addEventListener('resize', () => {
-      let value = 0;
-      isAnimating.current = true;
-      for (let i = 0; i < currentScrollIndex; i++) {
-        value = value + elements[i].offsetWidth;
+      if (timeout) {
+        clearTimeout(timeout);
       }
-      gsap.to(elements, .2, { ease: 'power.2out', x: -value, onComplete: () => { isAnimating.current = false } });
+      timeout = setTimeout(() => {
+        let value = 0;
+        isAnimating.current = true;
+        for (let i = 0; i < currentScrollIndex; i++) {
+          value = value + elements[i].offsetWidth;
+        }
+        gsap.to(elements, .3, { ease: 'power.2out', x: -value, onComplete: () => { isAnimating.current = false } });
+      }, 300)
     })
     return () => {
       window.removeEventListener('resize', listener);
