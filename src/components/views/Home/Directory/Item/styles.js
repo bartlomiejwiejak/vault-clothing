@@ -7,6 +7,12 @@ flex-shrink: 0;
 overflow: hidden;
 cursor: pointer;
 transition: .3s ease-out;
+@media screen and (max-width: 1024px) {
+  width: 50vw;
+ }
+ @media screen and (max-width: 640px) {
+  width: 100vw;
+ }
 :hover img {
 filter: brightness(0.4);
 transform: scale(1.03) translate(-50%,-50%);

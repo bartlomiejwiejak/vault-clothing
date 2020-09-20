@@ -1,21 +1,28 @@
 import { useRef, useState, useCallback, useEffect } from 'react';
 import gsap from 'gsap';
 
-const useScroller = (elementsVisibleNumber) => {
+const useScroller = (elementsVisibleNumber = 0) => {
   const containerRef = useRef(null);
   const [currentScrollIndex, setCurrentScrollIndex] = useState(0);
   const isAnimating = useRef(false);
   const [elements, setElements] = useState([]);
+  const [elementsVisibleNumberState, setElementsVisibleNumberState] = useState(elementsVisibleNumber);
+  const [endIndex, setEndIndex] = useState(0);
 
   const setContainer = useCallback(function (node) {
     containerRef.current = node;
-    setElements(containerRef.current.querySelectorAll('#scroll-item'));
+    const elements = containerRef.current.querySelectorAll('#scroll-item')
+    setElements(elements);
   }, [])
+
+  useEffect(() => {
+    setEndIndex(elements.length - elementsVisibleNumberState);
+  }, [elementsVisibleNumberState, elements.length])
 
   const scroll = useCallback(function (direction) {
     if (isAnimating.current || containerRef.current === null) return;
     if (direction === 'right') {
-      if (currentScrollIndex === elements.length - elementsVisibleNumber) return;
+      if (currentScrollIndex === endIndex) return;
       isAnimating.current = true;
       setCurrentScrollIndex(prev => prev + 1)
       let value = 0;
@@ -33,7 +40,7 @@ const useScroller = (elementsVisibleNumber) => {
       }
       gsap.to(elements, .5, { ease: 'power.2out', x: -value, onComplete: () => { isAnimating.current = false } });
     }
-  }, [currentScrollIndex, elements, elementsVisibleNumber])
+  }, [currentScrollIndex, elements, endIndex])
 
   useEffect(() => {
     let timeout = null;
@@ -42,20 +49,35 @@ const useScroller = (elementsVisibleNumber) => {
         clearTimeout(timeout);
       }
       timeout = setTimeout(() => {
+        let endIndex = elements.length - elementsVisibleNumber;
+        setElementsVisibleNumberState(elementsVisibleNumber);
+        if (window.innerWidth <= 1024) {
+          setElementsVisibleNumberState(elementsVisibleNumber - 1);
+          endIndex = elements.length - elementsVisibleNumber + 1;
+        }
+        if (window.innerWidth <= 640) {
+          setElementsVisibleNumberState(elementsVisibleNumber - 2);
+          endIndex = elements.length - elementsVisibleNumber + 2;
+        }
         let value = 0;
         isAnimating.current = true;
-        for (let i = 0; i < currentScrollIndex; i++) {
+        let scrollIndex = currentScrollIndex;
+        if (endIndex < currentScrollIndex) {
+          setCurrentScrollIndex(0);
+          scrollIndex = 0;
+        }
+        for (let i = 0; i < scrollIndex; i++) {
           value = value + elements[i].offsetWidth;
         }
-        gsap.to(elements, .3, { ease: 'power.2out', x: -value, onComplete: () => { isAnimating.current = false } });
+        gsap.to(elements, .1, { ease: 'power.2out', x: -value, onComplete: () => { isAnimating.current = false } });
       }, 300)
     })
     return () => {
       window.removeEventListener('resize', listener);
     }
-  }, [currentScrollIndex, elements])
+  }, [currentScrollIndex, elements, elementsVisibleNumber])
 
-  return { scroll, setContainer, currentScrollIndex, endIndex: elements.length - elementsVisibleNumber };
+  return { scroll, setContainer, currentScrollIndex, endIndex: endIndex };
 }
 
 export default useScroller;
