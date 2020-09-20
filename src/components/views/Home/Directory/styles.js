@@ -1,8 +1,26 @@
 import styled from 'styled-components';
 
 export const StyledDirectory = styled.div`
-overflow: hidden;
 height: 100%;
 display: inline-flex;
-width: auto;
+i {
+  font-size: var(--font-size-xxl);
+  color: var(--color-white);
+  position: fixed;
+  bottom: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+i.disabled {
+  color: var(--color-grey);
+  opacity: 0.6;
+}
+.arrow-left {
+  left: 0;
+  transform: translate(100%, -100%);
+}
+.arrow-right {
+  right: 0;
+  transform: translate(-100%, -100%);
+}
 `

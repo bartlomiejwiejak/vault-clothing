@@ -4,7 +4,7 @@ import { StyledItem } from './styles';
 
 const Item = ({ title, imageUrl, url }) => {
   return (
-    <StyledItem>
+    <StyledItem id='scroll-item'>
       <img
         className='background-image'
         src={imageUrl}
@@ -12,7 +12,7 @@ const Item = ({ title, imageUrl, url }) => {
         draggable={false}
       />
       <div className='content'>
-        <div className='title'>{title.toUpperCase()}</div>
+        <div className='title'>{title.charAt(0).toUpperCase() + title.slice(1)}</div>
         <span className='subtitle'>Explore & Shop Now</span>
       </div>
     </StyledItem>

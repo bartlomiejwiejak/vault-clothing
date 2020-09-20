@@ -6,4 +6,5 @@ export const StyledHome = styled.div`
   left: 0;
   width: 100vw;
   height: 50vh;
+  overflow: hidden;
 `
