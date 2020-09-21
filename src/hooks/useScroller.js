@@ -8,6 +8,7 @@ const useScroller = (elementsVisibleNumber = 0) => {
   const [elements, setElements] = useState([]);
   const [elementsVisibleNumberState, setElementsVisibleNumberState] = useState(elementsVisibleNumber);
   const [endIndex, setEndIndex] = useState(0);
+  const scrollRef = useRef(null);
 
   const setContainer = useCallback(function (node) {
     containerRef.current = node;
@@ -15,21 +16,18 @@ const useScroller = (elementsVisibleNumber = 0) => {
     setElements(elements);
   }, [])
 
-  useEffect(() => {
-    setEndIndex(elements.length - elementsVisibleNumberState);
-  }, [elementsVisibleNumberState, elements.length])
-
   const scroll = useCallback(function (direction) {
     if (isAnimating.current || containerRef.current === null) return;
     if (direction === 'right') {
       if (currentScrollIndex === endIndex) return;
+      console.log('right')
       isAnimating.current = true;
       setCurrentScrollIndex(prev => prev + 1)
       let value = 0;
       for (let i = 0; i < currentScrollIndex + 1; i++) {
         value = value + elements[i].offsetWidth;
       }
-      gsap.to(elements, .5, { ease: 'power.2out', x: -value, onComplete: () => { isAnimating.current = false } });
+      gsap.to(elements, .5, { ease: 'power.2out', x: -value, onComplete: () => { isAnimating.current = false; } });
     } else if (direction === 'left') {
       if (currentScrollIndex === 0) return;
       isAnimating.current = true;
@@ -38,9 +36,14 @@ const useScroller = (elementsVisibleNumber = 0) => {
       for (let i = 0; i < currentScrollIndex - 1; i++) {
         value = value + elements[i].offsetWidth;
       }
-      gsap.to(elements, .5, { ease: 'power.2out', x: -value, onComplete: () => { isAnimating.current = false } });
+      gsap.to(elements, .5, { ease: 'power.2out', x: -value, onComplete: () => { isAnimating.current = false; } });
     }
   }, [currentScrollIndex, elements, endIndex])
+
+  useEffect(() => {
+    setEndIndex(elements.length - elementsVisibleNumberState);
+    scrollRef.current = scroll;
+  }, [elementsVisibleNumberState, elements.length, scroll])
 
   useEffect(() => {
     let timeout = null;
@@ -76,6 +79,21 @@ const useScroller = (elementsVisibleNumber = 0) => {
       window.removeEventListener('resize', listener);
     }
   }, [currentScrollIndex, elements, elementsVisibleNumber])
+
+  useEffect(() => {
+    const listener = window.addEventListener('wheel', (e) => {
+      let direction;
+      if (e.wheelDelta < 0) {
+        direction = 'right';
+      } else {
+        direction = 'left';
+      }
+      scrollRef.current(direction);
+    })
+    return () => {
+      window.removeEventListener('wheel', listener)
+    }
+  }, [scroll])
 
   return { scroll, setContainer, currentScrollIndex, endIndex: endIndex };
 }
