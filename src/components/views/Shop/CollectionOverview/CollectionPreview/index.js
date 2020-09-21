@@ -6,7 +6,7 @@ import { StyledCollectionPreview } from './styles';
 const CollectionPreview = ({ title, items }) => {
   return (
     <StyledCollectionPreview>
-      <h1 className='title'>{title}</h1>
+      <h1 className='title'>{title}<span /></h1>
       <div className='preview'>
         {items.filter((item, id) => id < 4).map((item) => (
           <CollectionItem key={item.id} item={item} />
