@@ -109,7 +109,7 @@ const useScroller = (elementsVisibleNumber = 0) => {
       window.removeEventListener('touchstart', listenTouchStart)
       window.removeEventListener('touchmove', listenTouchMove)
     }
-  }, [scroll])
+  }, [])
 
   return { scroll, setContainer, currentScrollIndex, endIndex: endIndex };
 }

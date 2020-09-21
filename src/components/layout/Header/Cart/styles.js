@@ -2,13 +2,15 @@ import styled from 'styled-components';
 
 export const StyledCart = styled.div`
 flex-basis: 20%;
-margin: 2rem 0;
 display: flex;
 flex-direction: column;
+margin: 0 auto;
+height: 100%;
+padding-bottom: 2rem;
 justify-content: space-between;
-margin: 2rem auto;
-@media screen and (max-width: 640px){
-margin: 0 auto 2rem;
+@media screen and (max-width: 640px) {
+  height: 60%;
+  margin-top: -2rem;
 }
 >span {
   font-size: var(--font-size-m);

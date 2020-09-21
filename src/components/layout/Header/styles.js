@@ -78,28 +78,27 @@ transform: translateY(-100%);
  flex-wrap: wrap;
  justify-content: space-between;
  max-width: 140rem;
- margin: 0 auto;
- margin-top: 10rem;
- height: calc(50vh - 10rem);
+ margin: 12rem auto 0;
+ height: calc(50vh - 12rem);
  transform: translateY(100%);
  padding: 0 5rem;
  @media screen and (max-width: 1024px) {
-   padding: 0 3rem;
+  padding: 0 3rem;
  }
  @media screen and (max-width: 640px) {
    padding: 0 2rem;
-   margin-top: 5rem;
-   height: calc(70vh - 5rem);
+   margin: 7rem auto 0;
+   height: calc(70vh - 7rem);
  }
 }
 `
 export const StyledMenu = styled.ul`
 flex-basis: 30%;
 display: flex;
-margin: 2rem 0;
 flex-direction: column;
 justify-content: space-between;
 list-style: none;
+padding-bottom: 2rem;
 li {
   font-size: var(--font-size-xl);
   @media screen and (max-width: 640px) {
@@ -114,8 +113,8 @@ export const StyledContact = styled.ul`
 flex-basis: 30%;
 display: flex;
 flex-direction: column;
-margin: 2rem 0;
 justify-content: space-between;
+padding-bottom: 2rem;
 list-style: none;
 li {
   display: flex;
