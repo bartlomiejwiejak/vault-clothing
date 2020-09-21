@@ -7,7 +7,7 @@ display: flex;
 height: 50vh;
 justify-content: center;
 flex-direction: column;
-max-width: 140rem;
+max-width: 150rem;
 margin: 0 auto;
 padding: 0 5rem;
 @media screen and (max-width: 1024px) {

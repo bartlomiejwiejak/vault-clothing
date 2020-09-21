@@ -1,18 +1,18 @@
 import React from 'react'
 
-import CollectionItem from '../CollectionItem';
-import './styles.scss';
+import CollectionItem from '../../../../shared/CollectionItem';
+import { StyledCollectionPreview } from './styles';
 
 const CollectionPreview = ({ title, items }) => {
   return (
-    <div className='collection-preview'>
+    <StyledCollectionPreview>
       <h1 className='title'>{title}</h1>
-      <div className="preview">
+      <div className='preview'>
         {items.filter((item, id) => id < 4).map((item) => (
           <CollectionItem key={item.id} item={item} />
         ))}
       </div>
-    </div>
+    </StyledCollectionPreview>
   )
 }
 

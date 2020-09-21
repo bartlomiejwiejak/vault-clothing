@@ -20,7 +20,6 @@ const useScroller = (elementsVisibleNumber = 0) => {
     if (isAnimating.current || containerRef.current === null) return;
     if (direction === 'right') {
       if (currentScrollIndex === endIndex) return;
-      console.log('right')
       isAnimating.current = true;
       setCurrentScrollIndex(prev => prev + 1)
       let value = 0;

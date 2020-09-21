@@ -17,10 +17,10 @@ const Shop = ({ match, setCollectionsStart, isLoading, collectionIsLoaded }) => 
   if (!collectionIsLoaded && isLoading === false) return null;
 
   return isLoading ? <Spinner /> : (
-    <div>
+    <>
       <Route path={`${match.path}`} exact component={CollectionsOverview} />
       <Route path={`${match.path}/:categoryId`} exact component={Category} />
-    </div>
+    </>
   )
 }
 
