@@ -7,6 +7,7 @@ import { checkUserSession } from '../redux/user/actions';
 import { selectCurrentUser } from '../redux/user/selectors';
 import { createStructuredSelector } from 'reselect';
 import Basket from './layout/Basket';
+import Overlay from './layout/Overlay';
 
 const Shop = lazy(() => import('./views/Shop'));
 const Home = lazy(() => import('./views/Home'));
@@ -38,6 +39,8 @@ function App({ currentUser, checkUserSession }) {
   return (
     <>
       <Header />
+      <Overlay />
+      <Route path='/shop' component={Basket} />
       <Switch>
         <Suspense fallback={null}>
           <div className="content">
