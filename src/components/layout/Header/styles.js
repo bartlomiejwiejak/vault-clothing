@@ -5,6 +5,7 @@ export const StyledHeader = styled.header`
   position: fixed;
   width: 100vw;
   z-index: 2;
+  pointer-events: none;
   display: flex;
   padding: 5rem 5rem;
   max-width: 150rem;
@@ -32,6 +33,7 @@ export const StyledHeader = styled.header`
 export const StyledLogo = styled(Link)`
   height: 100%;
   text-align: center;
+  pointer-events: auto;
   div {
     font-size: var(--font-size-l);
     font-weight: bold;
@@ -42,6 +44,7 @@ export const StyledBurger = styled.div`
 height: 5rem;
 width: 5rem;
 position: relative;
+pointer-events: auto;
 cursor: pointer;
  div:nth-child(1) {
   height: 0.2rem;
