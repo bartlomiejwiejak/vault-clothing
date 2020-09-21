@@ -81,7 +81,7 @@ const useScroller = (elementsVisibleNumber = 0) => {
   }, [currentScrollIndex, elements, elementsVisibleNumber])
 
   useEffect(() => {
-    const listener = window.addEventListener('wheel', (e) => {
+    const listenWheel = window.addEventListener('wheel', (e) => {
       let direction;
       if (e.wheelDelta < 0) {
         direction = 'right';
@@ -90,8 +90,24 @@ const useScroller = (elementsVisibleNumber = 0) => {
       }
       scrollRef.current(direction);
     })
+    let touchStart = 0;
+    let touchEnd = 0;
+    const listenTouchStart = window.addEventListener('touchstart', (e) => {
+      touchStart = e.targetTouches[0].clientX;
+    })
+    const listenTouchMove = window.addEventListener('touchmove', (e) => {
+      touchEnd = e.targetTouches[0].clientX;
+      if (touchEnd - touchStart > 50) {
+        scrollRef.current('left')
+      }
+      if (touchEnd - touchStart < -50) {
+        scrollRef.current('right')
+      }
+    })
     return () => {
-      window.removeEventListener('wheel', listener)
+      window.removeEventListener('wheel', listenWheel)
+      window.removeEventListener('touchstart', listenTouchStart)
+      window.removeEventListener('touchmove', listenTouchMove)
     }
   }, [scroll])
 
