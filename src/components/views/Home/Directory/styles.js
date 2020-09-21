@@ -12,6 +12,9 @@ i {
   transition: .3s ease-out;
   mix-blend-mode: difference;
   z-index: 3;
+  @media screen and (max-width: 1024px) {
+  font-size: var(--font-size-xxl);
+  }
 }
 i.disabled {
   color: var(--color-grey);

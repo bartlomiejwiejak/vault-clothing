@@ -4,7 +4,7 @@ import { StyledMenuButton } from './styles';
 
 const MenuButton = ({ children, color, bold }) => {
   return (
-    <StyledMenuButton color={color} bold={bold}>
+    <StyledMenuButton id='button' color={color} bold={bold}>
       {children}
     </StyledMenuButton>
   )

@@ -25,11 +25,11 @@ const Header = ({ currentUser }) => {
     if (isAnimating.current) return;
     if (isDropdownOpen.current) {
       isAnimating.current = true;
-      gsap.to(dropdownContentRef.current, 1, { ease: 'custom', y: '100%' })
-      gsap.to(burgerRef.current.querySelector(':nth-child(1)'), .7, { rotate: 0, top: '2rem', ease: 'custom', delay: .3 })
-      gsap.to(burgerRef.current.querySelector(':nth-child(2)'), .7, { rotate: 0, bottom: '2rem', ease: 'custom', delay: .3 })
-      gsap.to('#root > .content', 1, { ease: 'custom', y: 0 })
-      gsap.to(dropdownRef.current, 1, {
+      gsap.to(dropdownContentRef.current, .8, { ease: 'custom', y: '100%' })
+      gsap.to(burgerRef.current.querySelector(':nth-child(1)'), .5, { rotate: 0, top: '2rem', ease: 'custom', delay: .3 })
+      gsap.to(burgerRef.current.querySelector(':nth-child(2)'), .5, { rotate: 0, bottom: '2rem', ease: 'custom', delay: .3 })
+      gsap.to('#root > .content', .8, { ease: 'custom', y: 0 })
+      gsap.to(dropdownRef.current, .8, {
         ease: 'custom', y: '-100%', onComplete: () => {
           isAnimating.current = false;
           gsap.set('body', { overflow: 'auto' })
@@ -40,12 +40,12 @@ const Header = ({ currentUser }) => {
     } else {
       isAnimating.current = true;
       gsap.set('body', { overflow: 'hidden' })
-      gsap.to(dropdownContentRef.current, 1, { ease: 'custom', y: 0 })
+      gsap.to(dropdownContentRef.current, .8, { ease: 'custom', y: 0 })
       gsap.set('#root > .content', { pointerEvents: 'none' })
-      gsap.to('#root > .content', 1, { ease: 'custom', y: '50vh' })
-      gsap.to(burgerRef.current.querySelector(':nth-child(1)'), .7, { rotate: '45deg', top: '2.4rem', ease: 'custom', delay: .3 })
-      gsap.to(burgerRef.current.querySelector(':nth-child(2)'), .7, { rotate: '-45deg', bottom: '2.4rem', ease: 'custom', delay: .3 })
-      gsap.to(dropdownRef.current, 1, {
+      gsap.to('#root > .content', .8, { ease: 'custom', y: '50vh' })
+      gsap.to(burgerRef.current.querySelector(':nth-child(1)'), .5, { rotate: '45deg', top: '2.4rem', ease: 'custom', delay: .3 })
+      gsap.to(burgerRef.current.querySelector(':nth-child(2)'), .5, { rotate: '-45deg', bottom: '2.4rem', ease: 'custom', delay: .3 })
+      gsap.to(dropdownRef.current, .8, {
         ease: 'custom', y: 0, onComplete: () => {
           isAnimating.current = false;
         }
