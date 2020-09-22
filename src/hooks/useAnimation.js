@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import gsap from 'gsap';
 
-import { setInitialized } from '../redux/routing/actions';
+import { setInitialized, setAnimating } from '../redux/routing/actions';
 import showHeader from '../animations/showHeader';
 import { homeEnter, leave, shopEnter } from '../animations';
 
@@ -18,7 +19,8 @@ const useAnimation = (component) => {
 
   useEffect(() => {
     if (isLoadedRef.current) return;
-    let delay = 0;
+    gsap.set('body', { overflow: 'auto' });
+    let delay = 300;
     isLoadedRef.current = true;
     if (!initialized) {
       showHeader();
@@ -41,9 +43,13 @@ const useAnimation = (component) => {
 
   useEffect(() => {
     if (animating) {
-      leave(() => history.push(path));
+      gsap.set('body', { overflow: 'hidden' });
+      leave(() => {
+        dispatch(setAnimating(false));
+        history.push(path);
+      });
     }
-  }, [animating, history, path])
+  }, [animating, history, path, dispatch])
 }
 
 export default useAnimation;

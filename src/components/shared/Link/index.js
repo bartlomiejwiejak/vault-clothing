@@ -17,7 +17,7 @@ const Link = ({ children, to }) => {
   }
 
   return (
-    <div onClick={startRedirecting} style={{ display: 'inline-block', position: 'relative', zIndex: 1 }}>
+    <div className='link' onClick={startRedirecting} style={{ display: 'inline-block', position: 'relative', zIndex: 1 }}>
       {children}
     </div>
   );

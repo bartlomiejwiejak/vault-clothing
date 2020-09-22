@@ -24,9 +24,11 @@ padding: 0 5rem;
   font-size: var(--font-size-m);
   margin-top: 5rem;
   margin-bottom: -5rem;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+  .link {
+    display: inline-flex !important;
+    align-items: center;
+    cursor: pointer;
+  }
   i {
     font-size: var(--font-size-xl);
     margin-left: 1rem;
