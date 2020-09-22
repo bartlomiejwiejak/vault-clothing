@@ -5,7 +5,7 @@ position: fixed;
 right: 3vw;
 bottom: 3vw;
 font-size: var(--font-size-xl);
-z-index: 2;
+z-index: 1;
 mix-blend-Mode: difference;
 color: var(--color-white);
 display: flex;
