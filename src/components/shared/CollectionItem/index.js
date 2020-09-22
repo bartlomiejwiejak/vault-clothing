@@ -8,18 +8,20 @@ import { StyledCollectionItem } from './styles';
 const CollectionItem = ({ item, addItem }) => {
   const { name, price, imageUrl } = item;
   return (
-    <StyledCollectionItem>
-      <div
-        className='image'
-        style={{
-          backgroundImage: `url(${imageUrl})`
-        }}
-      />
-      <footer>
-        <span className='name'>{name}</span>
-        <span className='price'>${price}</span>
-      </footer>
-      <Button onClick={() => addItem(item)} inverted>Add to cart</Button>
+    <StyledCollectionItem id='collection-item'>
+      <div className='container'>
+        <div
+          className='image'
+          style={{
+            backgroundImage: `url(${imageUrl})`
+          }}
+        />
+        <footer>
+          <span className='name'>{name}</span>
+          <span className='price'>${price}</span>
+        </footer>
+        <Button onClick={() => addItem(item)} inverted>Add to cart</Button>
+      </div>
     </StyledCollectionItem>
   );
 }

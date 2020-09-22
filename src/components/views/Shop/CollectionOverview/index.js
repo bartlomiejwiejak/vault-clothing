@@ -6,15 +6,21 @@ import { selectShopCollectionsForPreview } from '../../../../redux/shop/selector
 import CollectionPreview from './CollectionPreview';
 import { StyledCollectionOverview } from './styles';
 import GoToAbout from '../../../shared/GoToAbout';
+import useAnimation from '../../../../hooks/useAnimation';
 
-const CollectionsOverview = ({ collections }) => (
-  <StyledCollectionOverview>
-    {collections.map(({ title, items, id }) => (
-      <CollectionPreview key={id} title={title} items={items} />
-    ))}
-    <GoToAbout />
-  </StyledCollectionOverview>
-)
+const CollectionsOverview = ({ collections }) => {
+
+  useAnimation('SHOP')
+
+  return (
+    <StyledCollectionOverview>
+      {collections.map(({ title, items, id }) => (
+        <CollectionPreview key={id} title={title} items={items} />
+      ))}
+      <GoToAbout />
+    </StyledCollectionOverview>
+  )
+}
 
 const mapStateToProps = createStructuredSelector({
   collections: selectShopCollectionsForPreview

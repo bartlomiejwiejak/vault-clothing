@@ -4,12 +4,16 @@ export const StyledCollectionItem = styled.div`
 flex-basis: 24%;
 position: relative;
 margin-bottom: 5rem;
+overflow: hidden;
 @media screen and (max-width: 1024px) {
   flex-basis: 49%;
  }
 :hover .image {
   background-size: 130%;
   filter: brightness(0.4);
+}
+.container {
+  transform: translateY(100%) scale(0);
 }
 .image {
   background-size: 120%;

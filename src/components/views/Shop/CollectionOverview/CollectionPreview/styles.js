@@ -21,11 +21,18 @@ export const StyledCollectionPreview = styled.div`
   margin-bottom: 2rem;
   display: flex;
   align-items: center;
+  overflow: hidden;
   span {
+    display: inline-block;
+  }
+  .text {
+    transform: translateY(100%)
+  }
+  .line {
     height: 1px;
     background-color: var(--color-black);
-    flex-grow: 1;
     margin-left: 2rem;
+    width: 0;
   }
 }
 `
