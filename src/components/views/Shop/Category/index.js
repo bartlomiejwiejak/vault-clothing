@@ -2,18 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { selectCollection } from '../../../../redux/shop/selectors';
-import CollectionItem from '../../../shared/CollectionItem';
-import './styles.scss';
+import useAnimation from '../../../../hooks/useAnimation';
+import CollectionPreview from '../CollectionOverview/CollectionPreview';
+import { StyledCategory } from './styles';
+import GoTo from '../../../shared/GoTo';
 
 const Category = ({ collection }) => {
   const { title, items } = collection;
+
+  useAnimation('SHOP');
   return (
-    <div className='category'>
-      <h2>{title}</h2>
-      <div className='items'>
-        {items.map(item => <CollectionItem key={item.name} item={item} />)}
-      </div>
-    </div>
+    <StyledCategory>
+      <CollectionPreview items={items} title={title} all />
+      <GoTo to='/about'>Go To About</GoTo>
+    </StyledCategory>
   )
 }
 

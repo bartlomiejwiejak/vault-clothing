@@ -20,6 +20,7 @@ const useAnimation = (component) => {
   useEffect(() => {
     if (isLoadedRef.current) return;
     gsap.set('body', { overflow: 'auto' });
+    window.scrollTo(0, 0);
     let delay = 300;
     isLoadedRef.current = true;
     if (!initialized) {
