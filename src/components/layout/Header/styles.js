@@ -2,15 +2,15 @@ import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
   position: fixed;
-  width: 100vw;
   z-index: 2;
+  width: 100vw;
+  transform: translateX(-50%);
   pointer-events: none;
   display: flex;
   padding: 5rem 5rem;
   max-width: 150rem;
   top: 0;
   left: 50%;
-  transform: translateX(-50%);
   justify-content: space-between;
   align-items: center;
   mix-blend-mode: difference;
