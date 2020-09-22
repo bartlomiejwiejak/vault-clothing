@@ -4,7 +4,6 @@ import gsap from 'gsap';
 import { CustomEase } from 'gsap/CustomEase';
 
 import { selectCurrentUser } from '../../../redux/user/selectors';
-import { selectCartHidden } from '../../../redux/cart/selectors';
 import { selectAnimating } from '../../../redux/routing/selectors';
 import { createStructuredSelector } from 'reselect';
 import { StyledHeader, StyledLogo, StyledBurger, StyledDropdown, StyledMenu, StyledContact } from './styles';
@@ -13,7 +12,7 @@ import MenuButton from '../../shared/MenuButton';
 import Cart from './Cart';
 import Link from '../../shared/Link';
 
-const Header = ({ currentUser, animating }) => {
+const Header = ({ currentUser, animating, signOutStart }) => {
   const dropdownRef = useRef(null);
   const isDropdownOpen = useRef(false);
   const isAnimating = useRef(false)
@@ -76,9 +75,9 @@ const Header = ({ currentUser, animating }) => {
         <div ref={dropdownContentRef} className='content'>
           <StyledMenu>
             <span>Menu</span>
-            <li><MenuButton color='var(--color-black)' bold={true}>Shop</MenuButton></li>
-            <li><MenuButton color='var(--color-black)' bold={true}>About</MenuButton></li>
-            <li>{currentUser ? <MenuButton color='var(--color-black)' bold={true}>Sign Out</MenuButton> : <MenuButton color='var(--color-black)' bold={true}>Sign Out</MenuButton>}</li>
+            <li><MenuButton color='var(--color-black)' bold={true}><Link to='/shop'>Shop</Link></MenuButton></li>
+            <li><MenuButton color='var(--color-black)' bold={true}><Link to='/about'>About</Link></MenuButton></li>
+            <li>{currentUser ? <MenuButton color='var(--color-black)' bold={true} onClick={signOutStart}>Sign Out</MenuButton> : <MenuButton color='var(--color-black)' bold={true}><Link to='/auth'>Sign In</Link></MenuButton>}</li>
           </StyledMenu>
           <StyledContact>
             <span>Contact</span>
@@ -113,7 +112,6 @@ const Header = ({ currentUser, animating }) => {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
-  hidden: selectCartHidden,
   animating: selectAnimating
 })
 const mapDispatchToProps = dispatch => ({

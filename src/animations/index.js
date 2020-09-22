@@ -10,7 +10,7 @@ const tl = gsap.timeline({ defaults: { ease: 'power2.out' } })
 export const homeEnter = () => {
   tl.to('#overlay', 1, { ease: 'custom', y: '100%' })
     .from('#content', 1, { scale: '1.6', delay: -1 })
-    .from('#scroll-item', .5, { delay: -.5, y: '100%', scale: .5 })
+    .from('#scroll-item', .5, { delay: -.3, y: '100%', scale: .5 })
     .to('#directory i', 1, { bottom: 0, delay: .2 })
 }
 export const leave = (complete) => {
