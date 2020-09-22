@@ -5,7 +5,7 @@ import gsap from 'gsap';
 
 import { setInitialized, setAnimating } from '../redux/routing/actions';
 import showHeader from '../animations/showHeader';
-import { homeEnter, leave, shopEnter } from '../animations';
+import { homeEnter, leave, shopEnter, checkoutEnter } from '../animations';
 
 const useAnimation = (component) => {
   const isLoadedRef = useRef(false);
@@ -35,6 +35,9 @@ const useAnimation = (component) => {
           break;
         case 'SHOP':
           shopEnter();
+          break;
+        case 'CHECKOUT':
+          checkoutEnter();
           break;
         default:
           return;

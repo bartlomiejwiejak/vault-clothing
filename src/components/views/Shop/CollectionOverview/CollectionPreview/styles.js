@@ -35,16 +35,17 @@ export const StyledCollectionPreview = styled.div`
     width: 0;
   }
 }
-.button-container {
- overflow: hidden;
+  .button-container {
+   overflow: hidden;
+   @media screen and (max-width: 1024px) {
+   margin-top: -2.5rem;
+   }
 }
 #button-arrow {
     justify-content: flex-end;
     margin-top: 0;
     margin-bottom: 0;
     transform: translateY(100%);
-    @media screen and (max-width: 1024px) {
-      margin-top: -2.5rem;
-    }
+    
   }
 `

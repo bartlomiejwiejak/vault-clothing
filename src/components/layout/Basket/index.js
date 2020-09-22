@@ -5,6 +5,7 @@ import gsap from 'gsap';
 
 import { selectCartItemsCount } from '../../../redux/cart/selectors';
 import { StyledBasket } from './styles';
+import Link from '../../shared/Link';
 
 const Basket = ({ itemCount }) => {
   const BaskedRef = useRef(null);
@@ -25,8 +26,10 @@ const Basket = ({ itemCount }) => {
 
   return (
     <StyledBasket id='basket'>
-      <i ref={BaskedRef} onMouseOut={mouseOutHandler} onMouseEnter={mouseEnterHandler} className="fas fa-shopping-basket"></i>
-      <span>{itemCount}</span>
+      <Link to='/checkout'>
+        <i ref={BaskedRef} onMouseOut={mouseOutHandler} onMouseEnter={mouseEnterHandler} className="fas fa-shopping-basket"></i>
+        <span>{itemCount}</span>
+      </Link>
     </StyledBasket>
   )
 }

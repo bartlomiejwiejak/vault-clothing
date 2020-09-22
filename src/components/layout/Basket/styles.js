@@ -8,10 +8,12 @@ font-size: var(--font-size-xl);
 z-index: 1;
 mix-blend-Mode: difference;
 color: var(--color-white);
-display: flex;
-flex-direction: column;
-align-items: center;
 transform: scale(0);
+.link {
+  display: flex!important;
+  flex-direction: column;
+  align-items: center;
+}
 span {
   font-size: var(--font-size-l);
   margin-top: -.5rem;
