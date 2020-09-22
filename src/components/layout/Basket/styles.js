@@ -11,6 +11,7 @@ color: var(--color-white);
 display: flex;
 flex-direction: column;
 align-items: center;
+transform: scale(0);
 span {
   font-size: var(--font-size-l);
   margin-top: -.5rem;

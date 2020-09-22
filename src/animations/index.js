@@ -22,26 +22,33 @@ export const shopEnter = () => {
     .to('#preview:first-child .text', 1, { y: 0, delay: -.5 })
     .to('#preview:first-child .line', 1.5, { width: '100%', delay: -.7 })
     .to('#preview:first-child #collection-item .container', 1, { y: 0, scale: 1, delay: -1.5, stagger: 0.15 })
+    .to('#basket', .7, { scale: 1 })
 
   const items = document.querySelectorAll('#preview:not(:first-child)')
   for (let item of items) {
     gsap.to(item.querySelector('.text'), 1, {
-      y: 0, scrollTrigger: {
+      y: 0, ease: 'power2.out', scrollTrigger: {
         trigger: item,
         start: 'bottom bottom'
       }
     })
     gsap.to(item.querySelector('.line'), 1.5, {
-      width: '100%', delay: .3, scrollTrigger: {
+      width: '100%', ease: 'power2.out', delay: .3, scrollTrigger: {
         trigger: item,
         start: 'bottom bottom'
       }
     })
     gsap.to(item.querySelectorAll('#collection-item .container'), 1, {
-      scale: 1, y: 0, stagger: 0.15, delay: .3, scrollTrigger: {
+      scale: 1, y: 0, ease: 'power2.out', stagger: 0.15, delay: .3, scrollTrigger: {
         trigger: item,
         start: 'bottom bottom'
       }
     })
   }
+  gsap.to('#go-to .container', 1, {
+    y: 0, ease: 'power2.out', scrollTrigger: {
+      trigger: '#go-to',
+      start: 'bottom bottom'
+    }
+  })
 }

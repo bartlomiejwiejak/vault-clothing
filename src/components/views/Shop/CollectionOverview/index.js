@@ -5,7 +5,7 @@ import { createStructuredSelector } from 'reselect';
 import { selectShopCollectionsForPreview } from '../../../../redux/shop/selectors';
 import CollectionPreview from './CollectionPreview';
 import { StyledCollectionOverview } from './styles';
-import GoToAbout from '../../../shared/GoToAbout';
+import GoTo from '../../../shared/GoTo';
 import useAnimation from '../../../../hooks/useAnimation';
 
 const CollectionsOverview = ({ collections }) => {
@@ -17,7 +17,7 @@ const CollectionsOverview = ({ collections }) => {
       {collections.map(({ title, items, id }) => (
         <CollectionPreview key={id} title={title} items={items} />
       ))}
-      <GoToAbout />
+      <GoTo to='/about'>Go To About</GoTo>
     </StyledCollectionOverview>
   )
 }

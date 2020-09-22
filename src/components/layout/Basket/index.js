@@ -24,7 +24,7 @@ const Basket = ({ itemCount }) => {
   }
 
   return (
-    <StyledBasket>
+    <StyledBasket id='basket'>
       <i ref={BaskedRef} onMouseOut={mouseOutHandler} onMouseEnter={mouseEnterHandler} className="fas fa-shopping-basket"></i>
       <span>{itemCount}</span>
     </StyledBasket>
