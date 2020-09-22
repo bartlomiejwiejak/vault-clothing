@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 import { setAnimating, setPath } from '../../../redux/routing/actions';
 
-const Link = ({ children, to }) => {
+const Link = ({ children, to, styles }) => {
 
   const location = useLocation();
   const dispatch = useDispatch();
@@ -16,8 +16,13 @@ const Link = ({ children, to }) => {
     dispatch(setAnimating(true));
   }
 
+  let style = { display: 'inline-block', position: 'relative', zIndex: 1 }
+  if (styles) {
+    style = { ...style, ...styles };
+  }
+
   return (
-    <div className='link' onClick={startRedirecting} style={{ display: 'inline-block', position: 'relative', zIndex: 1 }}>
+    <div className='link' onClick={startRedirecting} style={style}>
       {children}
     </div>
   );

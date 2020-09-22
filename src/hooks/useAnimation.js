@@ -48,6 +48,7 @@ const useAnimation = (component) => {
   useEffect(() => {
     if (animating) {
       gsap.set('body', { overflow: 'hidden' });
+      console.log('leave')
       leave(() => {
         dispatch(setAnimating(false));
         history.push(path);

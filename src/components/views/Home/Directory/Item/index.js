@@ -1,10 +1,12 @@
 import React from 'react';
 
 import { StyledItem } from './styles';
+import Link from '../../../../shared/Link';
 
 const Item = ({ title, imageUrl, url }) => {
   return (
     <StyledItem id='scroll-item'>
+      <Link to={url} styles={{ position: 'absolute', left: 0, top: 0, bottom: 0, right: 0 }} />
       <img
         className='background-image'
         src={imageUrl}
