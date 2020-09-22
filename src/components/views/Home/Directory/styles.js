@@ -6,12 +6,12 @@ display: inline-flex;
 i {
   font-size: var(--font-size-xxxl);
   color: var(--color-white);
-  position: fixed;
-  bottom: 0;
+  position: absolute;
+  bottom: -50%;
   cursor: pointer;
   transition: .3s ease-out;
   mix-blend-mode: difference;
-  z-index: 3;
+  z-index: 1;
   @media screen and (max-width: 1024px) {
   font-size: var(--font-size-xxl);
   }

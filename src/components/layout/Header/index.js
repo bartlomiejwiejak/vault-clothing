@@ -28,12 +28,12 @@ const Header = ({ currentUser }) => {
       gsap.to(dropdownContentRef.current, .8, { ease: 'custom', y: '100%' })
       gsap.to(burgerRef.current.querySelector(':nth-child(1)'), .5, { rotate: 0, top: '2rem', ease: 'custom', delay: .3 })
       gsap.to(burgerRef.current.querySelector(':nth-child(2)'), .5, { rotate: 0, bottom: '2rem', ease: 'custom', delay: .3 })
-      gsap.to('#root > .content', .8, { ease: 'custom', y: 0 })
+      gsap.to('#content', .8, { ease: 'custom', y: 0 })
       gsap.to(dropdownRef.current, .8, {
         ease: 'custom', y: '-100%', onComplete: () => {
           isAnimating.current = false;
           gsap.set('body', { overflow: 'auto' })
-          gsap.set('#root > .content', { pointerEvents: 'auto' })
+          gsap.set('#content', { pointerEvents: 'auto' })
         }
       })
       isDropdownOpen.current = false;
@@ -41,8 +41,8 @@ const Header = ({ currentUser }) => {
       isAnimating.current = true;
       gsap.set('body', { overflow: 'hidden' })
       gsap.to(dropdownContentRef.current, .8, { ease: 'custom', y: 0 })
-      gsap.set('#root > .content', { pointerEvents: 'none' })
-      gsap.to('#root > .content', .8, { ease: 'custom', y: '50vh' })
+      gsap.set('#content', { pointerEvents: 'none' })
+      gsap.to('#content', .8, { ease: 'custom', y: '50vh' })
       gsap.to(burgerRef.current.querySelector(':nth-child(1)'), .5, { rotate: '45deg', top: '2.4rem', ease: 'custom', delay: .3 })
       gsap.to(burgerRef.current.querySelector(':nth-child(2)'), .5, { rotate: '-45deg', bottom: '2.4rem', ease: 'custom', delay: .3 })
       gsap.to(dropdownRef.current, .8, {
@@ -80,13 +80,13 @@ const Header = ({ currentUser }) => {
         </div>
       </StyledDropdown>
       <StyledHeader>
-        <StyledLogo to='/'>
-          <div>vault </div>
-          <div>clothing</div>
+        <StyledLogo id='logo'>
+          <span><span>vault</span></span>
+          <span><span>clothing</span></span>
         </StyledLogo>
-        <StyledBurger ref={burgerRef} onClick={dropdownHandler}>
-          <div></div>
-          <div></div>
+        <StyledBurger id='burger' ref={burgerRef} onClick={dropdownHandler}>
+          <div />
+          <div />
         </StyledBurger>
       </StyledHeader>
     </>

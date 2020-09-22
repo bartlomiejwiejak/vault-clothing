@@ -15,7 +15,7 @@ const Directory = ({ sections }) => {
     setContainer(directoryRef.current)
   }, [setContainer])
   return (
-    <StyledDirectory ref={directoryRef}>
+    <StyledDirectory id='directory' ref={directoryRef}>
       <i className={`fas fa-arrow-circle-left arrow-left ${currentScrollIndex === 0 ? 'disabled' : ''}`} onClick={() => scroll('left')}></i>
       {sections.map(({ id, ...otherProps }) => <Item key={id} {...otherProps} />)}
       <i className={`fas fa-arrow-circle-right arrow-right ${currentScrollIndex === endIndex ? 'disabled' : ''}`} onClick={() => scroll('right')}></i>

@@ -12,7 +12,8 @@ body {
 
 #root {
   background-color: var(--color-white);
-  & > .content {
-    min-height: 100vh;
-  }
+}
+
+#content {
+  min-height: 100vh;
 }

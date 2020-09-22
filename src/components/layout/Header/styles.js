@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const StyledHeader = styled.header`
   position: fixed;
@@ -30,14 +29,21 @@ export const StyledHeader = styled.header`
     padding: 1rem 1rem;
   }
 `
-export const StyledLogo = styled(Link)`
+export const StyledLogo = styled.div`
   height: 100%;
   text-align: center;
   pointer-events: auto;
-  div {
+  cursor: pointer;
+  span {
     font-size: var(--font-size-l);
     font-weight: bold;
-    line-height: 0.8;
+    display: block;
+    overflow: hidden;
+    span {
+      margin-top: -1rem;
+      line-height: 1.3;
+      transform: translateY(100%);
+    }
   }
 `
 export const StyledBurger = styled.div`
@@ -48,7 +54,7 @@ pointer-events: auto;
 cursor: pointer;
  div:nth-child(1) {
   height: 0.2rem;
-  width: 3rem;
+  width: 0;
   background-color: var(--color-white);
   position: absolute;
   left: 1rem;
@@ -56,7 +62,7 @@ cursor: pointer;
 }
 div:nth-child(2) {
   height: 0.2rem;
-  width: 3rem;
+  width: 0;
   background-color: var(--color-white);
   position: absolute;
   left: 1rem;

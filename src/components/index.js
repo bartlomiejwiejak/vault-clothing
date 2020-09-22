@@ -39,11 +39,10 @@ function App({ currentUser, checkUserSession }) {
   return (
     <>
       <Header />
-      <Overlay />
       <Route path='/shop' component={Basket} />
       <Switch>
         <Suspense fallback={null}>
-          <div className="content">
+          <div id='content'>
             <Route path='/' exact component={Home} />
             <Route path='/shop' component={Shop} />
             <Route path='/auth' exact render={() => currentUser ? <Redirect to='/' /> : <Auth />} />
@@ -51,7 +50,7 @@ function App({ currentUser, checkUserSession }) {
           </div>
         </Suspense>
       </Switch>
-
+      <Overlay />
     </>
   );
 }
