@@ -1,5 +1,5 @@
 import React, { useEffect, lazy, Suspense } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Header from './layout/Header';
@@ -45,7 +45,7 @@ function App({ currentUser, checkUserSession }) {
           <div id='content'>
             <Route path='/' exact component={Home} />
             <Route path='/shop' component={Shop} />
-            <Route path='/auth' exact render={() => currentUser ? <Redirect to='/' /> : <Auth />} />
+            <Route path='/auth' exact component={Auth} />
             <Route path='/checkout' exact component={Checkout} />
           </div>
         </Suspense>
