@@ -21,7 +21,7 @@ const CartDropdown = ({ cartItems }) => {
             <span className='empty-message'>Your cart is empty</span>
         }
       </div>
-      <Button><Link to='/checkout'>GO TO CHECKOUT</Link></Button>
+      {cartItems.length ? <Button><Link to='/checkout'>GO TO CHECKOUT</Link></Button> : <Button disabled>GO TO CHECKOUT</Button>}
     </StyledCart>
   )
 }

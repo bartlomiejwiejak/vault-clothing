@@ -10,11 +10,14 @@ export const StyledCollectionPreview = styled.div`
     margin-bottom: 5rem;
   }
 }
-
 .preview {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5rem;
+  @media screen and (max-width: 1024px) {
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 3rem;
+  }
 }
 .title {
   font-size: var(--font-size-l);
@@ -37,11 +40,9 @@ export const StyledCollectionPreview = styled.div`
 }
   .button-container {
    overflow: hidden;
-   @media screen and (max-width: 1024px) {
-   margin-top: -2.5rem;
-   }
-}
-#button-arrow {
+   margin-top: 2.5rem;
+  }
+  #button-arrow {
     justify-content: flex-end;
     margin-top: 0;
     margin-bottom: 0;

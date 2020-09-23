@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import gsap from 'gsap';
 
 import StripeButton from './StripeButton';
 import CheckoutItem from './Item';
 import useAnimation from '../../../hooks/useAnimation';
+import GoTo from '../../shared/GoTo';
 import {
   selectCartItems,
   selectCartTotal
@@ -21,7 +23,7 @@ export const CheckoutPage = ({ cartItems, total }) => {
 
   useAnimation('CHECKOUT');
 
-  return (
+  let content = (
     <StyledCheckout>
       <StyledHeader>
         <StyledHeaderBlock>
@@ -52,6 +54,19 @@ export const CheckoutPage = ({ cartItems, total }) => {
       <StripeButton price={total} />
     </StyledCheckout>
   )
+
+  if (cartItems.length === 0) {
+    content = <GoTo to='/shop'>Your cart is empty. Go back to shopping</GoTo>
+  }
+
+  useEffect(() => {
+    if (cartItems.length === 0) {
+      gsap.set('#go-to', { marginTop: 0, paddingTop: '25rem' })
+      gsap.to('#go-to .container', 1, { y: 0 })
+    }
+  }, [cartItems.length])
+
+  return content;
 };
 
 const mapStateToProps = createStructuredSelector({

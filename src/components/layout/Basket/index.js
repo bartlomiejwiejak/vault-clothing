@@ -25,12 +25,18 @@ const Basket = ({ itemCount }) => {
   }
 
   return (
-    <StyledBasket id='basket'>
-      <Link to='/checkout'>
-        <i ref={BaskedRef} onMouseOut={mouseOutHandler} onMouseEnter={mouseEnterHandler} className="fas fa-shopping-basket"></i>
+    itemCount ?
+      <StyledBasket id='basket'>
+        <Link to='/checkout'>
+          <i ref={BaskedRef} onMouseOut={mouseOutHandler} onMouseEnter={mouseEnterHandler} className="fas fa-shopping-basket"></i>
+          <span>{itemCount}</span>
+        </Link>
+      </StyledBasket>
+      :
+      <StyledBasket disabled id='basket'>
+        <i ref={BaskedRef} className="fas fa-shopping-basket"></i>
         <span>{itemCount}</span>
-      </Link>
-    </StyledBasket>
+      </StyledBasket>
   )
 }
 

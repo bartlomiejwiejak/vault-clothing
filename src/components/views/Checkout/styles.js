@@ -5,14 +5,14 @@ export const StyledCheckout = styled.div`
  display: flex;
  flex-direction: column;
  align-items: center;
- max-width: 130rem;
+ max-width: 110rem;
  margin: 0 auto;
- padding: 20rem 5rem;
+ padding: 20rem 10rem;
  @media screen and (max-width: 1024px) {
-  padding: 15rem 3rem;
+  padding: 15rem 7rem;
  }
  @media screen and (max-width: 640px) {
-  padding: 10rem 2rem;
+  padding: 10rem 5rem;
  }
   button {
     margin-left: auto;
@@ -37,6 +37,7 @@ export const StyledHeaderBlock = styled.div`
   }
   @media screen and (max-width: 800px) {
     width: 22%;
+    font-size: var(--default-font-size);
     &:last-child {
       width: 12%;
     }
@@ -44,14 +45,14 @@ export const StyledHeaderBlock = styled.div`
 `;
 
 export const StyledTotal = styled.div`
-  margin-top: 30px;
+  margin-top: 3rem;
   margin-left: auto;
-  font-size: 36px;
+  font-size: 3.6rem;
 `;
 
 export const StyledWarning = styled.div`
   text-align: center;
-  margin-top: 40px;
-  font-size: 24px;
+  margin-top: 4rem;
+  font-size: 2.4rem;
   color: red;
 `;

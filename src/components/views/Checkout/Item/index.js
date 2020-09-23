@@ -28,7 +28,7 @@ export const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
         <span>{quantity}</span>
         <div onClick={() => addItem(cartItem)}>&#10095;</div>
       </StyledQuantity>
-      <StyledText>{price}</StyledText>
+      <StyledText>${price * quantity}</StyledText>
       <StyledRemoveButton onClick={() => clearItem(cartItem)}>
         &#10005;
       </StyledRemoveButton>

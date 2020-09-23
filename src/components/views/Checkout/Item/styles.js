@@ -3,19 +3,19 @@ import styled from 'styled-components';
 export const StyledCheckoutItem = styled.div`
   width: 100%;
   display: flex;
-  min-height: 100px;
-  border-bottom: 1px solid darkgrey;
-  padding: 15px 0;
-  font-size: 20px;
+  min-height: 10rem;
+  border-bottom: 1px solid var(--color-grey);
+  padding: 1.5rem 0;
+  font-size: 2rem;
   align-items: center;
-  @media screen and (max-width: 800px) {
-    font-size: 18px;
+  @media screen and (max-width: 640px) {
+    font-size: 1.8rem;
   }
 `;
 
 export const StyledImageContainer = styled.div`
   width: 23%;
-  padding-right: 15px;
+  padding-right: 1.5rem;
   img {
     width: 100%;
     height: 100%;
@@ -32,7 +32,7 @@ export const StyledText = styled.span`
 export const StyledQuantity = styled(StyledText)`
   display: flex;
   span {
-    margin: 0 10px;
+    margin: 0 1rem;
   }
   div {
     cursor: pointer;
@@ -42,7 +42,7 @@ export const StyledQuantity = styled(StyledText)`
 StyledQuantity.displayName = 'Quantity';
 
 export const StyledRemoveButton = styled.div`
-  padding-left: 12px;
+  padding-left: 1.5rem;
   cursor: pointer;
 `;
 

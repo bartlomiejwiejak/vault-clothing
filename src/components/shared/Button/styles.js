@@ -50,4 +50,9 @@ export const StyledButton = styled.button`
     }
   }
   }
+  :disabled {
+    background-color: var(--color-grey);
+    cursor: auto;
+    color: var(--color-white);
+  }
 `
