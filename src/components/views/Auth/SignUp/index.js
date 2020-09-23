@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import Input from '../../../shared/Input';
 import Button from '../../../shared/Button';
-import './styles.scss';
 import { signUpStart } from '../../../../redux/user/actions';
+import { StyledSignUp, StyledTitle } from './styles';
 
 const SignUp = ({ signUpStart }) => {
   const [formState, setFormState] = useState({
@@ -34,17 +34,45 @@ const SignUp = ({ signUpStart }) => {
   }
   const { displayName, email, password, confirmPassword } = formState;
   return (
-    <div className='sign-up'>
-      <h2 className='title'>I do not have a account</h2>
+    <StyledSignUp>
+      <StyledTitle>I do not have a account</StyledTitle>
       <span>Sign up with your email and password</span>
       <form className='sign-up-form' onSubmit={handleSubmit}>
-        <Input type='text' name='displayName' value={displayName} onChange={handleChange} label='Display Name' required />
-        <Input type='email' name='email' value={email} onChange={handleChange} label='Email' required />
-        <Input type='password' name='password' value={password} onChange={handleChange} label='Password' required />
-        <Input type='password' name='confirmPassword' value={confirmPassword} onChange={handleChange} label='Confirm Password' required />
-        <Button type='submit'>Sign Up</Button>
+        <Input
+          type='text'
+          name='displayName'
+          value={displayName}
+          onChange={handleChange}
+          label='Display Name'
+          required
+        />
+        <Input
+          type='email'
+          name='email'
+          value={email}
+          onChange={handleChange}
+          label='Email'
+          required
+        />
+        <Input
+          type='password'
+          name='password'
+          value={password}
+          onChange={handleChange}
+          label='Password'
+          required
+        />
+        <Input
+          type='password'
+          name='confirmPassword'
+          value={confirmPassword}
+          onChange={handleChange}
+          label='Confirm Password'
+          required
+        />
+        <Button type='submit'>SIGN UP</Button>
       </form>
-    </div>
+    </StyledSignUp>
   )
 }
 

@@ -1,15 +1,19 @@
 import React from 'react'
 
-import './styles.scss';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import useAnimation from '../../../hooks/useAnimation';
+import { StyledAuth } from './styles';
 
 const Auth = () => {
+
+  useAnimation('AUTH');
+
   return (
-    <div className='auth'>
+    <StyledAuth>
       <SignIn />
       <SignUp />
-    </div>
+    </StyledAuth>
   )
 }
 

@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux';
 
 import Input from '../../../shared/Input';
-import './styles.scss';
 import Button from '../../../shared/Button';
 import { googleSignInStart, emailSignInStart } from '../../../../redux/user/actions';
+import {
+  StyledSignIn,
+  StyledTitle,
+  StyledButtonsBar
+} from './styles';
 
 const SignIn = ({ googleSignInStart, emailSignInStart }) => {
   const [formState, setFormState] = useState({
@@ -12,8 +16,9 @@ const SignIn = ({ googleSignInStart, emailSignInStart }) => {
     password: ''
   })
 
+  const { email, password } = formState;
+
   async function handleSubmit(e) {
-    const { email, password } = formState;
     e.preventDefault()
     emailSignInStart(email, password)
   }
@@ -29,19 +34,40 @@ const SignIn = ({ googleSignInStart, emailSignInStart }) => {
   }
 
   return (
-    <div className='sign-in'>
-      <h2>I already have an account</h2>
+    <StyledSignIn>
+      <StyledTitle>I already have an account</StyledTitle>
       <span>Sign in with your email and password</span>
+
       <form onSubmit={handleSubmit}>
-        <Input handleChange={handleChange} type='email' name='email' label='Email' value={formState.email} />
-        <Input handleChange={handleChange} type='password' name='password' label='Password' value={formState.password} />
-        <div className="buttons">
-          <Button type='submit'>Sign In</Button>
-          <Button type='button' onClick={googleSignInStart} isGoogle>Sign In With Google</Button>
-        </div>
+        <Input
+          name='email'
+          type='email'
+          handleChange={handleChange}
+          value={email}
+          label='email'
+          required
+        />
+        <Input
+          name='password'
+          type='password'
+          value={password}
+          handleChange={handleChange}
+          label='password'
+          required
+        />
+        <StyledButtonsBar>
+          <Button type='submit'> Sign in </Button>
+          <Button
+            type='button'
+            onClick={googleSignInStart}
+            isGoogle
+          >
+            Sign in with Google
+          </Button>
+        </StyledButtonsBar>
       </form>
-    </div>
-  )
+    </StyledSignIn>
+  );
 }
 
 const mapDispatchToProps = dispatch => ({
