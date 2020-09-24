@@ -5,6 +5,7 @@ font-size: var(--font-size-xl);
 font-weight: bold;
 display: flex;
 height: 50vh;
+height: calc(var(--vh, 1vh) * 50);
 justify-content: center;
 flex-direction: column;
 max-width: 150rem;

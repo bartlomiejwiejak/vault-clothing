@@ -71,6 +71,7 @@ div:nth-child(2) {
 `
 export const StyledDropdown = styled.div`
 height: 50vh;
+height: calc(var(--vh, 1vh) * 50);
 width: 100vw;
 position: fixed;
 z-index: 2;
@@ -81,6 +82,7 @@ top: 0;
 transform: translateY(-100%);
 @media screen and (max-width: 640px) {
   height: 70vh;
+  height: calc(var(--vh, 1vh) * 70);
  }
 .content {
  display: flex;
@@ -88,7 +90,7 @@ transform: translateY(-100%);
  justify-content: space-between;
  max-width: 150rem;
  margin: 12rem auto 0;
- height: calc(50vh - 12rem);
+ height: calc(calc(var(--vh, 1vh) * 50) - 12rem);
  transform: translateY(100%);
  padding: 0 5rem;
  @media screen and (max-width: 1024px) {
@@ -97,7 +99,7 @@ transform: translateY(-100%);
  @media screen and (max-width: 640px) {
    padding: 0 2rem;
    margin: 7rem auto 0;
-   height: calc(70vh - 7rem);
+   height: calc(calc(var(--vh, 1vh) * 70) - 7rem);
  }
 }
 `

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledCheckout = styled.div`
  min-height: 90vh;
+ min-height: calc(var(--vh, 1vh) * 90);
  display: flex;
  flex-direction: column;
  align-items: center;

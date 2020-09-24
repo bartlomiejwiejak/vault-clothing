@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledOverlay = styled.div`
   height: 60vh;
+  height: calc(var(--vh, 1vh) * 60);
   width: 100%;
   display: flex;
   justify-content: center;

@@ -43,7 +43,13 @@ const Header = ({ currentUser, animating, signOutStart }) => {
     gsap.set('body', { overflow: 'hidden' })
     gsap.to(dropdownContentRef.current, .8, { ease: 'custom', y: 0 })
     gsap.set('#content', { pointerEvents: 'none' })
-    gsap.to('#content', .8, { ease: 'custom', y: '50vh' })
+
+    let value = '50vh';
+    if (window.innerWidth <= 640) {
+      value = '70vh';
+    }
+
+    gsap.to('#content', .8, { ease: 'custom', y: value })
     gsap.to(burgerRef.current.querySelector(':nth-child(1)'), .5, { rotate: '45deg', top: '2.4rem', ease: 'custom', delay: .3 })
     gsap.to(burgerRef.current.querySelector(':nth-child(2)'), .5, { rotate: '-45deg', bottom: '2.4rem', ease: 'custom', delay: .3 })
     gsap.to(dropdownRef.current, .8, {
