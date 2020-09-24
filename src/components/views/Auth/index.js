@@ -6,6 +6,7 @@ import SignUp from './SignUp';
 import useAnimation from '../../../hooks/useAnimation';
 import { StyledAuth } from './styles';
 import { setAnimating, setPath } from '../../../redux/routing/actions';
+import ErrorMessage from './ErrorMessage';
 
 const Auth = () => {
 
@@ -23,6 +24,7 @@ const Auth = () => {
 
   return (
     <StyledAuth>
+      <ErrorMessage />
       <SignIn />
       <SignUp />
     </StyledAuth>

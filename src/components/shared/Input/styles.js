@@ -50,4 +50,13 @@ export const StyledLabel = styled.label`
   }
 `;
 
+export const StyledErrorMessage = styled.div`
+  color: red;
+  font-size: var(--default-font-size);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateY(120%);
+`
+
 StyledLabel.displayName = 'StyledLabel';
