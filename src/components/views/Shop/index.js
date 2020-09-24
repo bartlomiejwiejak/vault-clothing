@@ -10,10 +10,11 @@ import { createStructuredSelector } from 'reselect';
 import Spinner from '../../layout/Spinner';
 import { selectIsLoading, selectIsCollectionLoaded } from '../../../redux/shop/selectors';
 
-const Shop = ({ match, setCollectionsStart, isLoading, collectionIsLoaded }) => {
+const Shop = ({ match, setCollectionsStart, isLoading, collectionIsLoaded, collections }) => {
   useEffect(() => {
+    if (collections.length !== 0) return;
     setCollectionsStart()
-  }, [setCollectionsStart])
+  }, [setCollectionsStart, collections.length])
   if (!collectionIsLoaded && isLoading === false) return null;
 
   return isLoading ? <Spinner /> : (
