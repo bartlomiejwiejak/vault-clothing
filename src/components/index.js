@@ -4,33 +4,18 @@ import { connect } from 'react-redux';
 
 import Header from './layout/Header';
 import { checkUserSession } from '../redux/user/actions';
-import { selectCurrentUser } from '../redux/user/selectors';
-import { createStructuredSelector } from 'reselect';
 import Basket from './layout/Basket';
 import Overlay from './layout/Overlay';
+import useWindowHeight from '../hooks/useWindowHeight';
 
 const Shop = lazy(() => import('./views/Shop'));
 const Home = lazy(() => import('./views/Home'));
 const Auth = lazy(() => import('./views/Auth'));
 const Checkout = lazy(() => import('./views/Checkout'))
 
-function App({ currentUser, checkUserSession }) {
+function App({ checkUserSession }) {
 
-  // useEffect(() => {
-  //   unsubscribeFromAuth.current = auth.onAuthStateChanged(async user => {
-  //     if (user) {
-  //       const userRef = await createUserProfile(user)
-  //       userRef.onSnapshot(snapshot => {
-  //         setCurrentUser({
-  //           id: snapshot.id,
-  //           ...snapshot.data()
-  //         })
-  //       })
-  //     }
-  //     setCurrentUser(user)
-  //   })
-  //   return unsubscribeFromAuth.current
-  // }, [setCurrentUser])
+  useWindowHeight();
 
   useEffect(() => {
     checkUserSession()
@@ -55,12 +40,8 @@ function App({ currentUser, checkUserSession }) {
   );
 }
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
-})
-
 const mapDispatchToProps = dispatch => ({
   checkUserSession: () => dispatch(checkUserSession())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);
