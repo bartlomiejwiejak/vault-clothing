@@ -70,9 +70,13 @@ export const shopEnter = () => {
 
 export const checkoutEnter = () => {
   tl.to('#overlay', 1, { ease: 'custom', y: '100%' })
-    .from('#content', 1, { scale: '1.1', delay: -1 })
+    .from('#content', 1, { scale: '1.1', delay: -1 });
 }
 
 export const authEnter = () => {
-  tl.to('#overlay', 1, { ease: 'custom', y: '100%' })
+  tl.to('#overlay', 1, { ease: 'custom', y: '100%' });
+}
+
+export const aboutEnter = () => {
+  tl.to('#overlay', 1, { ease: 'custom', y: '100%' });
 }

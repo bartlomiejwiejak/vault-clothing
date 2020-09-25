@@ -12,6 +12,7 @@ const Shop = lazy(() => import('./views/Shop'));
 const Home = lazy(() => import('./views/Home'));
 const Auth = lazy(() => import('./views/Auth'));
 const Checkout = lazy(() => import('./views/Checkout'))
+const About = lazy(() => import('./views/About'));
 
 function App({ checkUserSession }) {
 
@@ -32,6 +33,7 @@ function App({ checkUserSession }) {
             <Route path='/shop' component={Shop} />
             <Route path='/auth' exact component={Auth} />
             <Route path='/checkout' exact component={Checkout} />
+            <Route path='/about' exact component={About} />
           </div>
         </Suspense>
       </Switch>
