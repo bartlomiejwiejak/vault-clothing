@@ -7,10 +7,14 @@ export const StyledAbout = styled.div`
 export const StyledHeader = styled.header`
 height: 100vh;
 height: calc(var(--vh,1vh)*100);
+margin-bottom: 20rem;
 width: 100vw;
 overflow: hidden;
 position: relative;
-.lines-box {
+@media only screen and (max-width: 640px) {
+  margin-bottom: 10rem;
+}
+.text-box {
   position: absolute;
   width: 100vw;
   max-width: 150rem;
@@ -31,7 +35,7 @@ position: relative;
   }
   @media screen and (max-width: 640px) {
    font-size: var(--default-font-size);
-   bottom: 10vw;
+   bottom: 5vw;
    padding: 0 2rem;
   }
   h1 {
@@ -45,6 +49,28 @@ position: relative;
   }
   > * {
     white-space: nowrap;
+  }
+  .scroll-indicator {
+    position: absolute;
+    right: 5rem;
+    bottom: 0;
+    font-weight: bold;
+    font-size: var(--font-size-m);
+    display: flex;
+    align-items: center;
+    @media screen and (max-width: 1024px) {
+      right: 3rem;
+    }
+    @media screen and (max-width: 640px) {
+      position: relative;
+      justify-content: center;
+      right: 0;
+      margin-top: 2rem;
+    }
+    i {
+      margin-left: 2.5rem;
+      font-size: var(--font-size-xxl);
+    }
   }
 }
 img {

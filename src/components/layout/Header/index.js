@@ -28,7 +28,12 @@ const Header = ({ currentUser, animating, signOutStart }) => {
     gsap.to(dropdownContentRef.current, .8, { ease: 'custom', y: '100%' })
     gsap.to(burgerRef.current.querySelector(':nth-child(1)'), .5, { rotate: 0, top: '2rem', ease: 'custom', delay: .3 })
     gsap.to(burgerRef.current.querySelector(':nth-child(2)'), .5, { rotate: 0, bottom: '2rem', ease: 'custom', delay: .3 })
-    gsap.to('#content', .8, { ease: 'custom', y: 0 })
+    gsap.to('#content', .8, {
+      ease: 'custom', y: 0, onComplete: () => {
+        document.querySelector('#content').style.transform = 'none';
+      }
+    })
+
     gsap.to(dropdownRef.current, .8, {
       ease: 'custom', y: '-100%', onComplete: () => {
         isAnimating.current = false;
@@ -49,9 +54,13 @@ const Header = ({ currentUser, animating, signOutStart }) => {
       value = '70vh';
     }
 
-    gsap.to('#content', .8, { ease: 'custom', y: value })
-    gsap.to(burgerRef.current.querySelector(':nth-child(1)'), .5, { rotate: '45deg', top: '2.4rem', ease: 'custom', delay: .3 })
-    gsap.to(burgerRef.current.querySelector(':nth-child(2)'), .5, { rotate: '-45deg', bottom: '2.4rem', ease: 'custom', delay: .3 })
+    gsap.to('#content', .8, {
+      ease: 'custom', y: value, onComplete: () => {
+        gsap.set('#content', { y: value })
+      }
+    });
+    gsap.to(burgerRef.current.querySelector(':nth-child(1)'), .5, { rotate: '45deg', top: '2.4rem', ease: 'custom', delay: .3 });
+    gsap.to(burgerRef.current.querySelector(':nth-child(2)'), .5, { rotate: '-45deg', bottom: '2.4rem', ease: 'custom', delay: .3 });
     gsap.to(dropdownRef.current, .8, {
       ease: 'custom', y: 0, onComplete: () => {
         isAnimating.current = false;
