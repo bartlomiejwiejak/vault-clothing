@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 import aboutHeader from '../../../assets/about-header.jpg';
 
-export const StyledAbout = styled.div`
-`
 export const StyledHeader = styled.header`
 height: 100vh;
 height: calc(var(--vh,1vh)*100);
@@ -38,6 +36,9 @@ position: relative;
    bottom: 5vw;
    padding: 0 2rem;
   }
+  > * {
+    overflow: hidden;
+  }
   h1 {
   font-size: var(--font-size-l);
   margin-bottom: 5rem;
@@ -58,6 +59,8 @@ position: relative;
     font-size: var(--font-size-m);
     display: flex;
     align-items: center;
+    transform: translateY(100%);
+    opacity: 0;
     @media screen and (max-width: 1024px) {
       right: 3rem;
     }
@@ -71,6 +74,10 @@ position: relative;
       margin-left: 2.5rem;
       font-size: var(--font-size-xxl);
     }
+  }
+  .wrapper {
+    transform: translateY(100%);
+    opacity: 0;
   }
 }
 img {

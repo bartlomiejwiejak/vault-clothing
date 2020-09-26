@@ -70,13 +70,23 @@ export const shopEnter = () => {
 
 export const checkoutEnter = () => {
   tl.to('#overlay', 1, { ease: 'custom', y: '100%' })
-    .from('#content', 1, { scale: '1.1', delay: -1 });
+    .from('#content', 1, { scale: '.1', delay: -.5 });
 }
 
 export const authEnter = () => {
-  tl.to('#overlay', 1, { ease: 'custom', y: '100%' });
+  tl.to('#overlay', 1, { ease: 'custom', y: '100%' })
+    .from('#content', 1, { scale: .1, delay: -.5 });
 }
 
 export const aboutEnter = () => {
-  tl.to('#overlay', 1, { ease: 'custom', y: '100%' });
+  tl.to('#overlay', 1, { ease: 'custom', y: '100%' })
+    .from('#about-header', 2, { y: '100%', scale: 0, delay: -1 })
+    .to('#about-header .wrapper, #about-header .scroll-indicator', 1.5, { y: 0, autoAlpha: 1, delay: -.3, stagger: 0.15 });
+
+  gsap.to('#go-to .container', 1, {
+    y: 0, ease: 'power2.out', scrollTrigger: {
+      trigger: '#go-to',
+      start: 'bottom bottom'
+    }
+  })
 }

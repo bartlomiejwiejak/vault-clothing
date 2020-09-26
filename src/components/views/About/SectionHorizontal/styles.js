@@ -99,6 +99,7 @@ z-index: 1;
   }
   .image-container {
     position: absolute;
+    overflow: hidden;
     img {
       width: 100%;
       height: 100%;

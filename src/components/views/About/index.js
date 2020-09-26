@@ -1,19 +1,21 @@
 import React from 'react';
 
 import useAnimation from '../../../hooks/useAnimation';
-import { StyledAbout, StyledHeader } from './styles';
+import { StyledHeader } from './styles';
 import SectionHorizontal from './SectionHorizontal';
+import Footer from './Footer';
 
 const About = () => {
+
   useAnimation('ABOUT');
 
-  return <StyledAbout>
-    <StyledHeader>
+  return <div>
+    <StyledHeader id='about-header'>
       <img alt='' />
       <div className='text-box'>
-        <h1>Born out of a Passion</h1>
-        <h2>Transforming shopping into an experience</h2>
-        <h2>with vision for a better outlook</h2>
+        <h1><div className='wrapper'>Born out of a Passion</div></h1>
+        <h2><div className='wrapper'>Transforming shopping into an experience</div></h2>
+        <h2><div className='wrapper'>with vision for a better outlook</div></h2>
         <div className='scroll-indicator'>
           <span>Scroll Down</span>
           <i className='fas fa-arrow-circle-down'></i>
@@ -21,8 +23,8 @@ const About = () => {
       </div>
     </StyledHeader>
     <SectionHorizontal />
-    <div style={{ width: '100vw', height: '100vh', backgroundColor: 'black' }} />
-  </StyledAbout>
+    <Footer />
+  </div>
 }
 
 export default About;

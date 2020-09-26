@@ -13,9 +13,10 @@ const SectionHorizontal = () => {
     const sections = containerRef.current.querySelectorAll('section');
     let scrollTriggerEnabled;
     let trigger;
+    let mq;
 
     if (matchMedia) {
-      const mq = window.matchMedia('(min-width: 641px)');
+      mq = window.matchMedia('(min-width: 641px)');
       mq.addListener(WidthChange);
       WidthChange(mq);
     }
@@ -29,15 +30,49 @@ const SectionHorizontal = () => {
           gsap.set(sections, { xPercent: 0, overwrite: true });
           trigger.kill(true);
         }
+
         if (shouldEnable) {
-          gsap.to(sections, {
-            xPercent: -100 * (sections.length - 1),
+          gsap.to('#scroll-container .text > *:not(h2)', {
+            x: -containerRef.current.offsetWidth * 2 / 3,
+            ease: "none",
+            scrollTrigger: {
+              id: 'horizontal-scroll',
+              trigger: containerRef.current,
+              pin: true,
+              scrub: 2,
+              end: () => '+=' + containerRef.current.offsetWidth
+            }
+          });
+          gsap.to('#scroll-container .text > h2', {
+            x: -containerRef.current.offsetWidth * 2 / 3,
+            ease: "none",
+            scrollTrigger: {
+              id: 'horizontal-scroll',
+              trigger: containerRef.current,
+              pin: true,
+              scrub: 1.5,
+              end: () => '+=' + containerRef.current.offsetWidth
+            }
+          });
+          gsap.to('#scroll-container .image-container, #scroll-container .section-name', {
+            x: -containerRef.current.offsetWidth * 2 / 3,
             ease: "none",
             scrollTrigger: {
               id: 'horizontal-scroll',
               trigger: containerRef.current,
               pin: true,
               scrub: 1,
+              end: () => '+=' + containerRef.current.offsetWidth
+            }
+          });
+          gsap.to('#scroll-container .image-container img', {
+            scale: 1.6,
+            ease: "none",
+            scrollTrigger: {
+              id: 'horizontal-scroll',
+              trigger: containerRef.current,
+              pin: true,
+              scrub: 2,
               end: () => '+=' + containerRef.current.offsetWidth
             }
           });
@@ -49,13 +84,15 @@ const SectionHorizontal = () => {
     trigger = ScrollTrigger.getById('horizontal-scroll');
 
     return () => {
+      mq.removeListener(WidthChange);
+      if (!trigger) return;
       gsap.killTweensOf([trigger.scroller, trigger.animation]);
       trigger.kill(true);
     }
   }, [])
 
   return (
-    <StyledContainer id='#scroll-container' ref={containerRef}>
+    <StyledContainer id='scroll-container' ref={containerRef}>
       <StyledSection>
         <div className='text text--1'>
           <h2>Vault Clothing</h2>
@@ -98,3 +135,15 @@ const SectionHorizontal = () => {
 }
 
 export default SectionHorizontal;
+
+// gsap.to(sections, {
+//   xPercent: -100 * (sections.length - 1),
+//   ease: "none",
+//   scrollTrigger: {
+//     id: 'horizontal-scroll',
+//     trigger: containerRef.current,
+//     pin: true,
+//     scrub: 1,
+//     end: () => '+=' + containerRef.current.offsetWidth
+//   }
+// });
