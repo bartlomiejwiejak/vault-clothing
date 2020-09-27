@@ -2,6 +2,8 @@ import React from 'react'
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 
+import img from '../../../../assets/favicon-32x32.png';
+
 const StripeButton = ({ price }) => {
   const priceForStripe = price * 100;
   const publishibleKey = 'pk_test_51HPpRqBFimewjrhIqQfpEcdRwt8Thsfe6uRbMePnk3qPtgziwKfxCHKQJD5sqRxauiery5l1budZC6yTpLk1NV0500MXofz8E7';
@@ -18,10 +20,10 @@ const StripeButton = ({ price }) => {
   }
   return <StripeCheckout
     label='Pay Now'
-    name='Shop Clothing Ltd.'
+    name='Vault Clothing Ltd.'
     shippingAddress
     billingAddress
-    image='https://svgshare.com/i/CUz.svg'
+    image={img}
     description={`Your total is $${price}`}
     amount={priceForStripe}
     panelLabel='Pay Now'
