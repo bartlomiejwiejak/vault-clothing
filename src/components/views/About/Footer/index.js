@@ -34,6 +34,11 @@ const Footer = () => {
           {line}
         </div>
       </div>
+      <div className="contact">
+        <div className="mark" />
+        <div className="touch">GET IN TOUCH</div>
+        <div className="email">hello@melriver.com</div>
+      </div>
       <GoTo to='/shop'>Start Shopping Now</GoTo>
     </StyledFooter>
   )

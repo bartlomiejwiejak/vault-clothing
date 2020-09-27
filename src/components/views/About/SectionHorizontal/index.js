@@ -10,9 +10,9 @@ const SectionHorizontal = () => {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    const sections = containerRef.current.querySelectorAll('section');
     let scrollTriggerEnabled;
-    let trigger;
+    const ids = ['paragraphs', 'headings', 'images-move', 'images-scale']
+    let triggers = []
     let mq;
 
     if (matchMedia) {
@@ -23,12 +23,13 @@ const SectionHorizontal = () => {
 
     function WidthChange(mq) {
       let shouldEnable = mq.matches;
-      trigger = ScrollTrigger.getById('horizontal-scroll');
       if (shouldEnable !== scrollTriggerEnabled) {
-        if (trigger) {
-          gsap.killTweensOf([trigger.scroller, trigger.animation]);
-          gsap.set(sections, { xPercent: 0, overwrite: true });
-          trigger.kill(true);
+        if (triggers.length !== 0) {
+          for (let trigger of triggers) {
+            gsap.killTweensOf([trigger.scroller, trigger.animation]);
+            trigger.kill(true);
+          }
+          gsap.set('#scroll-container .text > *:not(h2),#scroll-container .text > h2,#scroll-container .image-container, #scroll-container .section-name,#scroll-container .image-container img', { x: 0, scale: 1, overwrite: true });
         }
 
         if (shouldEnable) {
@@ -36,7 +37,7 @@ const SectionHorizontal = () => {
             x: -containerRef.current.offsetWidth * 2 / 3,
             ease: "none",
             scrollTrigger: {
-              id: 'horizontal-scroll',
+              id: 'paragraphs',
               trigger: containerRef.current,
               pin: true,
               scrub: 2,
@@ -47,7 +48,7 @@ const SectionHorizontal = () => {
             x: -containerRef.current.offsetWidth * 2 / 3,
             ease: "none",
             scrollTrigger: {
-              id: 'horizontal-scroll',
+              id: 'headings',
               trigger: containerRef.current,
               pin: true,
               scrub: 1.5,
@@ -58,7 +59,7 @@ const SectionHorizontal = () => {
             x: -containerRef.current.offsetWidth * 2 / 3,
             ease: "none",
             scrollTrigger: {
-              id: 'horizontal-scroll',
+              id: 'images-move',
               trigger: containerRef.current,
               pin: true,
               scrub: 1,
@@ -69,25 +70,26 @@ const SectionHorizontal = () => {
             scale: 1.6,
             ease: "none",
             scrollTrigger: {
-              id: 'horizontal-scroll',
+              id: 'images-scale',
               trigger: containerRef.current,
               pin: true,
               scrub: 2,
               end: () => '+=' + containerRef.current.offsetWidth
             }
           });
+          triggers = ids.map(id => ScrollTrigger.getById(id))
         }
       }
       scrollTriggerEnabled = shouldEnable;
     }
 
-    trigger = ScrollTrigger.getById('horizontal-scroll');
-
     return () => {
       mq.removeListener(WidthChange);
-      if (!trigger) return;
-      gsap.killTweensOf([trigger.scroller, trigger.animation]);
-      trigger.kill(true);
+      if (!triggers.lenght === 0) return;
+      for (let trigger of triggers) {
+        gsap.killTweensOf([trigger.scroller, trigger.animation]);
+        trigger.kill(true);
+      }
     }
   }, [])
 

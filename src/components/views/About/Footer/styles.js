@@ -28,4 +28,43 @@ padding: 20rem 0;
 span {
   padding: 0 1rem;
 }
+.contact {
+  width: 80%;
+  margin: 0 1.5% 0 auto;
+  text-align: center;
+  margin-top: 20rem;
+  @media only screen and (max-width: 1024px) {
+    margin-top: 15rem;
+  }
+  @media only screen and (max-width: 640px) {
+    margin-top: 10rem;
+  }
+  @media only screen and (max-width: 1024px) {
+    width: 90%;
+  }
+  .mark {
+    height: 5px;
+    background-color: var(--color-black);
+  }
+  .touch {
+    font-size: var(--font-size-xxxxxxxl);
+    white-space: nowrap;
+    @media only screen and (max-width: 1024px) {
+    font-size: var(--font-size-xxxxxxl);
+    }
+    @media only screen and (max-width: 640px) {
+    font-size: var(--font-size-xxxxxl);
+    }
+  }
+  .email {
+    font-size: var(--font-size-xxxxxl);
+    white-space: nowrap;
+    @media only screen and (max-width: 1024px) {
+    font-size: var(--font-size-xxxxl);
+    }
+    @media only screen and (max-width: 640px) {
+    font-size: var(--font-size-xxxl);
+    }
+  }
+}
 `
