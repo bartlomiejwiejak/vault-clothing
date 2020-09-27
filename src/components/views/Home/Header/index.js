@@ -8,7 +8,7 @@ const Header = () => {
     <StyledHeader>
       <span>However You Fit, Vault Clothing Fits You.</span>
       <span>Built on Service, Focused on Style.</span>
-      <ButtonArrow to='/shop'>Start Shopping Now</ButtonArrow>
+      <ButtonArrow to='/about'>Learn More</ButtonArrow>
     </StyledHeader>
   )
 }
