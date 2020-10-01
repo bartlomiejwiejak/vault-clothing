@@ -63,7 +63,7 @@ span {
     font-size: var(--font-size-xxxxl);
     }
     @media only screen and (max-width: 640px) {
-    font-size: var(--font-size-xxxl);
+    font-size: var(--font-size-xxl);
     }
   }
 }
